@@ -2,14 +2,18 @@ import axios from 'axios';
 
 class postService  {
     constructor() {
-        this.auth = axios.create({
+        this.post = axios.create({
           baseURL: process.env.REACT_APP_BACKEND_BASE_URL,
           withCredentials: true
         })
       }
 
     listAllPost(){
-        return this.auth.post('/post/all')
+        return this.post.get('/post/all')
         .then(({ data }) => data);
     }
 }
+
+const postServices = new postService();
+
+export default postServices;
