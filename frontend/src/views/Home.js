@@ -43,7 +43,7 @@ class Home extends Component {
                 {!error &&  
                     <>
                         {!loading && this.statusPosts()}  
-                        {loading && <div>Loading...</div>} 
+                        {loading && <div>Cargando publicaciones...</div>} 
                     </>             
                 }<div>{error}</div>
   
