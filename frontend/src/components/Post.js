@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListPosts from './ListPosts';
 
 class Post extends Component {
     render() {
@@ -8,11 +9,7 @@ class Post extends Component {
                 {
                     posts.map((post, index) =>{
                         return(
-                            <div key={`post-${index}`} className="post-row">
-                                <p><i><b>{post.username}</b></i></p>
-                                <p>{post.text}</p>
-                                <p>Likes: <b>{post.likes.length}</b></p>
-                            </div>
+                            <ListPosts post={post} index={index}></ListPosts>
                         )
                     })
                 }
