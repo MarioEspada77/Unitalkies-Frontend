@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {withAuth} from '../Context/AuthContext';
 import postServices from '../services/postService';
 import Post from '../components/Post';
+import WritePost from '../components/WritePost';
 
 class Home extends Component {
     state = {
@@ -25,19 +26,33 @@ class Home extends Component {
            })
        })
     }
+    addPost = (text) =>{
+        const {user} = this.props;
+        postServices.createPost(user.username)
+        .then((post) =>{
+            console.log("Escrito correctamente");
+        })
+        .catch((error) =>{
+            console.log(error);
+        })
+    }
+
     statusPosts = () =>{
         const { posts } = this.state;
         if(posts.length === 0 ){
             return ( <div>No hay ninguna publicación que mostrar</div>)
         }else{
             return (
-                <Post posts={posts}></Post>
+                <>
+                    <WritePost addPost={this.addPost} />
+                    <Post posts={posts}></Post>
+                </>
             );
         }
     }
+  
     render() {
         const { posts, loading, error } = this.state;
-        console.log(posts);
         return (
             <div>
                 {!error &&  

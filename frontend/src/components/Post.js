@@ -4,12 +4,13 @@ import ListPosts from './ListPosts';
 class Post extends Component {
     render() {
         const { posts } = this.props;
+        console.log(posts);
         return (
             <div className="post">  
                 {
-                    posts.map((post, index) =>{
+                    posts.map((post) =>{
                         return(
-                            <ListPosts post={post} index={index}></ListPosts>
+                            <ListPosts post={post}></ListPosts>
                         )
                     })
                 }

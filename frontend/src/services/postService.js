@@ -12,6 +12,10 @@ class postService  {
         return this.post.get('/post/all')
         .then(({ data }) => data);
     }
+    createPost(username){
+      return this.post.post(`/post/${username}/new`)
+      .then(({ data }) => data);
+    }
 }
 
 const postServices = new postService();
