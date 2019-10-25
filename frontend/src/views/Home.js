@@ -19,6 +19,10 @@ class Home extends Component {
        })
        .catch((error) =>{
            console.log(error);
+           this.setState({
+               loading: false,
+               error: "No ha sido posible cargar las publicaciones"
+           })
        })
     }
     statusPosts = () =>{
@@ -36,8 +40,13 @@ class Home extends Component {
         console.log(posts);
         return (
             <div>
-                {!loading && this.statusPosts()}  
-                {loading && <div>Loading...</div>}
+                {!error &&  
+                    <>
+                        {!loading && this.statusPosts()}  
+                        {loading && <div>Loading...</div>} 
+                    </>             
+                }<div>{error}</div>
+  
             </div>
         );
     }
