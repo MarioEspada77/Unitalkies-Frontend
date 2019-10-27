@@ -26,25 +26,21 @@ class Home extends Component {
            })
        })
     }
-    addPost = (text) =>{
-        const {user} = this.props;
-        postServices.createPost(user.username)
-        .then((post) =>{
-            console.log("Escrito correctamente");
-        })
-        .catch((error) =>{
-            console.log(error);
+    updatePost = (post) =>{
+        const { posts } = this.state;
+        this.setState({
+            posts: [post , ...posts],
         })
     }
-
     statusPosts = () =>{
         const { posts } = this.state;
         if(posts.length === 0 ){
             return ( <div>No hay ninguna publicación que mostrar</div>)
         }else{
+            const { user } = this.props;
             return (
                 <>
-                    <WritePost addPost={this.addPost} />
+                    <WritePost user={user} updatePost={this.updatePost} />
                     <Post posts={posts}></Post>
                 </>
             );
