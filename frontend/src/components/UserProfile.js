@@ -35,11 +35,10 @@ class UserProfile extends Component {
             <div>
                 {!error &&  
                     <>
-                     <Post posts={posts}></Post> 
                         {!loading && <div>
                             <p>username: {profile[0].username}</p>
                             <div className="user-publications">
-                                {posts.length === 0  && <p>Este usuario todavía no ha escrito ninguna publicación</p>} 
+                                {posts.length === 0  && <p>Este usuario todavía no ha escrito ninguna publicación</p>}: <Post posts={posts}></Post> 
                             </div>
                         </div>}  
                         {loading && <div>Cargando perfil del usuario...</div>} 
