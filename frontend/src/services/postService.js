@@ -17,6 +17,10 @@ class postService  {
       return this.post.post(`/post/${username}/new`, { text }  )
       .then(({ data }) => data);
     }
+    createLike(postId, username){
+      return this.post.get(`/post/${postId}/${username}/like`)
+      .then(({ data }) => data);
+    }
 }
 
 const postServices = new postService();
