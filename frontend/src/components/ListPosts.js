@@ -16,7 +16,6 @@ class ListPosts extends Component {
   makeLike = async () => {
     const { post, user } = this.props;
     const { likes } = this.state;
-    console.log("user id" + user._id + "username" + user.username);
     try {
       const like = await postServices.createLike(post._id, user.username);
       if (like) {
@@ -31,7 +30,6 @@ class ListPosts extends Component {
   makeUnlike = async () => {
     const { post, user } = this.props;
     const { likes } = this.state;
-    console.log("user id" + user._id + "username" + user.username);
     try {
       const unlike = await postServices.createUnlike(post._id, user.username);
       if (unlike) {
@@ -61,7 +59,6 @@ class ListPosts extends Component {
   render() {
     const { post, user } = this.props;
     const { likes } = this.state;
-    console.log("RENDER" + user.username);
     return (
       <div key={`post-${post._id}`} className="post-row">
         <p>

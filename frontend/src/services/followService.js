@@ -23,6 +23,11 @@ class followService {
       .get(`/follow/${follower}/getFollowing`)
       .then(({ data }) => data);
   }
+  deleteFollow(followId){
+    return this.follow
+    .get(`/follow/${followId}/unfollow`)
+    .then(({ data }) => data);
+  }
 }
 
 const followServices = new followService();
