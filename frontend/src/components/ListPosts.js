@@ -50,7 +50,6 @@ class ListPosts extends Component {
     const { user } = this.props;
     const { likes } = this.state;
     let ifExistLikes = likes.indexOf(user._id);
-    console.log(ifExistLikes);
 
     if (ifExistLikes > -1) {
       return <button onClick={this.makeUnlike}>Ya no me gusta</button>;
