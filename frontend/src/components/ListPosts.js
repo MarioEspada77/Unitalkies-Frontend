@@ -16,11 +16,12 @@ class ListPosts extends Component {
   makeLike = async () => {
     const { post, user } = this.props;
     const { likes } = this.state;
+    console.log("user id" + user._id + "username" + user.username);
     try {
       const like = await postServices.createLike(post._id, user.username);
       if (like) {
         this.setState({
-          likes: [like.username._id, ...likes]
+          likes: [user._id, ...likes]
         });
       }
     } catch (error) {
@@ -30,13 +31,13 @@ class ListPosts extends Component {
   makeUnlike = async () => {
     const { post, user } = this.props;
     const { likes } = this.state;
+    console.log("user id" + user._id + "username" + user.username);
     try {
       const unlike = await postServices.createUnlike(post._id, user.username);
       if (unlike) {
         const newLikes = likes.filter(element => {
-          return unlike.username._id !== element;
+          return user._id !== element;
         });
-        console.log("Nuevo array" + newLikes);
         this.setState({
           likes: newLikes
         });
@@ -49,6 +50,7 @@ class ListPosts extends Component {
     const { user } = this.props;
     const { likes } = this.state;
     let ifExistLikes = likes.indexOf(user._id);
+    console.log(ifExistLikes);
 
     if (ifExistLikes > -1) {
       return <button onClick={this.makeUnlike}>Ya no me gusta</button>;
@@ -58,8 +60,9 @@ class ListPosts extends Component {
   };
 
   render() {
-    const { post } = this.props;
+    const { post, user } = this.props;
     const { likes } = this.state;
+    console.log("RENDER" + user.username);
     return (
       <div key={`post-${post._id}`} className="post-row">
         <p>
