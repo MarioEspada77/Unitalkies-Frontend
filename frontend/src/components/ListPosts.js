@@ -14,16 +14,31 @@ class ListPosts extends Component {
     });
   }
   makeLike = async () => {
-    const { post } = this.props;
+    const { post, user } = this.props;
     const { likes } = this.state;
     try {
-      const like = await postServices.createLike(
-        post._id,
-        post.username.username
-      );
+      const like = await postServices.createLike(post._id, user.username);
       if (like) {
         this.setState({
           likes: [like.username._id, ...likes]
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  makeUnlike = async () => {
+    const { post, user } = this.props;
+    const { likes } = this.state;
+    try {
+      const unlike = await postServices.createUnlike(post._id, user.username);
+      if (unlike) {
+        const newLikes = likes.filter(element => {
+          return unlike.username._id !== element;
+        });
+        console.log("Nuevo array" + newLikes);
+        this.setState({
+          likes: newLikes
         });
       }
     } catch (error) {
@@ -36,7 +51,7 @@ class ListPosts extends Component {
     let ifExistLikes = likes.indexOf(user._id);
 
     if (ifExistLikes > -1) {
-      return <button>Ya no me gusta</button>;
+      return <button onClick={this.makeUnlike}>Ya no me gusta</button>;
     } else {
       return <button onClick={this.makeLike}>Me gusta</button>;
     }
