@@ -7,7 +7,9 @@ class Post extends Component {
     return (
       <div className="post">
         {posts.map(post => {
-          return <ListPosts post={post}></ListPosts>;
+          return (
+            <ListPosts key={`id-post-${post._id}`} post={post}></ListPosts>
+          );
         })}
       </div>
     );

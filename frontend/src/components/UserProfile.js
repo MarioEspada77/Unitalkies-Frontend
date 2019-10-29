@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import profileServices from "../services/profileService";
 import followServices from "../services/followService";
+import { withAuth } from "../Context/AuthContext";
 import Post from "./Post";
 import Follow from "./Follow";
 
@@ -11,7 +12,8 @@ class UserProfile extends Component {
     loading: true,
     error: undefined,
     follows: [],
-    following: []
+    following: [],
+    isFollowing: null
   };
   componentDidMount() {
     const { username } = this.props;
@@ -52,9 +54,54 @@ class UserProfile extends Component {
         console.log(error);
       });
   }
+  getFollows = async () => {
+    const { follows } = this.state;
+    const { username, user } = this.props;
+    try {
+      const follow = await followServices.followUser(username, user.username);
+      console.log("FOLLOW", follow);
+      if (follow) {
+        this.setState({
+          isFollowing: true,
+          follows: [...follows, follow]
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  getUnfollow = async () => {
+    const { user } = this.props;
+    const { follows } = this.state;
+    console.log("ESTADO SEGUIDOS", follows);
+    const ifFollwings = follows.find(element => {
+      if (element.follower._id === user._id) {
+        return true;
+      }
+    });
+    console.log(ifFollwings);
+    console.log(user);
+    try {
+      const unfollow = await followServices.deleteFollow(ifFollwings._id);
+      if (unfollow) {
+        this.setState({
+          isFollowing: false
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   render() {
-    const { profile, posts, loading, error, follows, following } = this.state;
-    const { username } = this.props;
+    const {
+      profile,
+      posts,
+      loading,
+      error,
+      follows,
+      following,
+      isFollowing
+    } = this.state;
     return (
       <div>
         {!error && (
@@ -62,7 +109,11 @@ class UserProfile extends Component {
             {!loading && (
               <div>
                 <p>username: {profile[0].username}</p>
-                <Follow username={username} follows={follows}></Follow>
+                <Follow
+                  isFollowing={isFollowing}
+                  getFollows={this.getFollows}
+                  getUnfollow={this.getUnfollow}
+                ></Follow>
                 <p>Siguiendo {following.length}</p>
                 <p>Seguidores: {follows.length}</p>
                 <div className="user-publications">
@@ -84,4 +135,4 @@ class UserProfile extends Component {
   }
 }
 
-export default UserProfile;
+export default withAuth(UserProfile);
