@@ -88,6 +88,7 @@ class UserProfile extends Component {
       following,
       isFollowing
     } = this.state;
+    const { user } = this.props;
     return (
       <div>
         {!error && (
@@ -95,11 +96,7 @@ class UserProfile extends Component {
             {!loading && (
               <div>
                 <p>username: {profile[0].username}</p>
-                <Follow
-                  isFollowing={isFollowing}
-                  getFollows={this.getFollows}
-                  getUnfollow={this.getUnfollow}
-                ></Follow>
+                {user._id !== profile[0]._id && <Follow isFollowing={isFollowing} getFollows={this.getFollows} getUnfollow={this.getUnfollow}></Follow>}
                 <p>Siguiendo {following.length}</p>
                 <p>Seguidores: {follows.length}</p>
                 <div className="user-publications">
