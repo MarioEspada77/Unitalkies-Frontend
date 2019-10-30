@@ -6,24 +6,31 @@ import ListFollowing from './ListFollowing';
 class UserFollowing extends Component {
     state = {
         following: [],
+        loading: true,
     }
     async componentDidMount(){
-        const { username } = this.props.match.params;
+        const { username } =  this.props.match.params;
         const following = await followServices.getFollowing(username)
         this.setState({
-            following
+            following,
+            loading: false,
+
         })
     }
     render() {
-        const { following } = this.state;
-        console.log("ESTADO" ,this.state.following)
+        const { following, loading } = this.state;
+        const { username } = this.props.match.params;
+
         return (
             <div>
-                {
-                    following.map((user) =>{
-                        return ( <ListFollowing username={user} key={`username-${user._id}`}></ListFollowing> )
-                    })
+                {following.length === 0 && <div>{username} todavía no sigue a ningún usuario</div>}
+                {!loading && 
+                        following.map((user) =>{
+                            return ( <ListFollowing username={user} key={`username-${user._id}`}></ListFollowing> )
+                         })
                 }
+                {loading && <div>Cargando usuarios...</div>}
+
             </div>
         );
     }
