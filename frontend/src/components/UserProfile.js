@@ -58,15 +58,14 @@ class UserProfile extends Component {
   getUnfollow = async () => {
     const { user, username } = this.props;
     const { follows } = this.state;
-    const ifFollwings =  await follows.find(element => {
+    const ifFollwing =  await follows.find(element => {
       if (element.follower._id === user._id) {
         return true
       }
     });
-    console.log(ifFollwings._id);
+
     try {
-      console.log(ifFollwings._id);
-      const unfollow = await followServices.deleteFollow(ifFollwings._id);
+      const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
       if (unfollow) {
         this.setState({
