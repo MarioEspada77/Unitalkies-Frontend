@@ -18,7 +18,7 @@ class UserProfile extends Component {
   async componentDidMount() {
     const { username, user } = this.props;
 
-    const {userProfile, posts} = await profileServices.listUserProfile(username)
+    const userProfile = await profileServices.listUserProfile(username).catch((error) =>{ this.setState({error: "El perfil que estas buscando no existe", loading: false})})
 
     const follows = await followServices.getFollowersUser(username)
 
@@ -30,8 +30,8 @@ class UserProfile extends Component {
       }
     });
       this.setState({
-        profile: userProfile,
-        posts: posts,
+        profile: userProfile.userProfile,
+        posts: userProfile.posts,
         loading: false,
         follows,
         following,
@@ -90,7 +90,7 @@ class UserProfile extends Component {
     } = this.state;
     return (
       <div>
-        {!profile && (
+        {!error && (
           <>
             {!loading && (
               <div>
@@ -115,7 +115,7 @@ class UserProfile extends Component {
             {loading && <div>Cargando perfil del usuario...</div>}
           </>
         )}
-        <div><p>El perfil que estas buscando no existe</p></div>
+         <div>{error}</div>
       </div>
     );
   }
