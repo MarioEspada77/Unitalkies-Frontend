@@ -18,7 +18,7 @@ class UserProfile extends Component {
   async componentDidMount() {
     const { username, user } = this.props;
 
-    const userProfile = await profileServices.listUserProfile(username).catch((error) =>{ this.setState({error: "El perfil que estas buscando no existe", loading: false})})
+    const userProfile = await profileServices.listUserProfile(username).catch((error) =>{ this.setState({error: "El perfil que estas buscando no existe o no esta disponible", loading: false})})
 
     const follows = await followServices.getFollowersUser(username)
 
