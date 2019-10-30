@@ -29,7 +29,7 @@ class UserProfile extends Component {
         return true
       }
     });
-    this.setState({
+      this.setState({
         profile: userProfile,
         posts: posts,
         loading: false,
@@ -37,6 +37,8 @@ class UserProfile extends Component {
         following,
         isFollowing: ifFollwing,
       })
+  
+
 
   }
   getFollows = async () => {
@@ -88,7 +90,7 @@ class UserProfile extends Component {
     } = this.state;
     return (
       <div>
-        {!error && (
+        {!profile && (
           <>
             {!loading && (
               <div>
@@ -113,7 +115,7 @@ class UserProfile extends Component {
             {loading && <div>Cargando perfil del usuario...</div>}
           </>
         )}
-        <div>{error}</div>
+        <div><p>El perfil que estas buscando no existe</p></div>
       </div>
     );
   }
