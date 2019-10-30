@@ -15,44 +15,29 @@ class UserProfile extends Component {
     following: [],
     isFollowing: null
   };
-  componentDidMount() {
-    const { username } = this.props;
-    profileServices
-      .listUserProfile(username)
-      .then(userProfile => {
-        this.setState({
-          profile: userProfile.user,
-          posts: userProfile.posts,
-          loading: false
-        });
-      })
-      .catch(error => {
-        this.setState({
-          loading: false,
-          error: "El perfil que estás buscando no existe"
-        });
-      });
-    followServices
-      .getFollowersUser(username)
-      .then(follows => {
-        this.setState({
-          follows
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  async componentDidMount() {
+    const { username, user } = this.props;
 
-    followServices
-      .getFollowing(username)
-      .then(following => {
-        this.setState({
-          following
-        });
+    const {userProfile, posts} = await profileServices.listUserProfile(username)
+
+    const follows = await followServices.getFollowersUser(username)
+
+    const following = await followServices.getFollowing(username)
+
+    const ifFollwing = await follows.find(element => {
+      if (element.follower._id === user._id) {
+        return true
+      }
+    });
+    await this.setState({
+        profile: userProfile,
+        posts: posts,
+        loading: false,
+        follows,
+        following,
+        isFollowing: ifFollwing,
       })
-      .catch(error => {
-        console.log(error);
-      });
+
   }
   getFollows = async () => {
     const { follows } = this.state;
@@ -71,21 +56,22 @@ class UserProfile extends Component {
     }
   };
   getUnfollow = async () => {
-    const { user } = this.props;
+    const { user, username } = this.props;
     const { follows } = this.state;
-    console.log("ESTADO SEGUIDOS", follows);
-    const ifFollwings = follows.find(element => {
+    const ifFollwings =  await follows.find(element => {
       if (element.follower._id === user._id) {
-        return true;
+        return true
       }
     });
-    console.log(ifFollwings);
-    console.log(user);
+    console.log(ifFollwings._id);
     try {
+      console.log(ifFollwings._id);
       const unfollow = await followServices.deleteFollow(ifFollwings._id);
+      const follows = await followServices.getFollowersUser(username);
       if (unfollow) {
         this.setState({
-          isFollowing: false
+          isFollowing: false,
+          follows
         });
       }
     } catch (error) {
