@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import profileServices from "../services/profileService";
 import followServices from "../services/followService";
 import { withAuth } from "../Context/AuthContext";
+import { Link } from 'react-router-dom';
 import Post from "./Post";
 import Follow from "./Follow";
 
@@ -97,7 +98,7 @@ class UserProfile extends Component {
               <div>
                 <p>username: {profile[0].username}</p>
                 {user._id !== profile[0]._id && <Follow isFollowing={isFollowing} getFollows={this.getFollows} getUnfollow={this.getUnfollow}></Follow>}
-                <p>Siguiendo {following.length}</p>
+                <p><Link to={`/following/${profile[0].username}`}>Siguiendo{following.length}</Link></p>
                 <p>Seguidores: {follows.length}</p>
                 <div className="user-publications">
                   {posts.length === 0 && (
