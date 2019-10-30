@@ -10,6 +10,8 @@ import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import Home from './views/Home';
 import UserProfileView from './views/UserProfileView';
+import UserFollowers from './components/UserFollowers';
+import UserFollowing from './components/UserFollowing';
 
 class App extends Component {
   render() {
@@ -22,6 +24,8 @@ class App extends Component {
             <AnonRoute exact path="/signup" component={Signup} />
             <PrivateRoute exact path="/home" component={Home} />
             <PrivateRoute exact path="/profile/:username" component={UserProfileView} />
+            <PrivateRoute exact path="/followers/:username" component={UserFollowers} />
+            <PrivateRoute exact path="/following/:username" component={UserFollowing} />
           </Router>
       </>
     );
