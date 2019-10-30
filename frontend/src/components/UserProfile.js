@@ -60,10 +60,10 @@ class UserProfile extends Component {
     const { follows } = this.state;
     const ifFollwing =  await follows.find(element => {
       if (element.follower._id === user._id) {
-        return true
+        return element
       }
     });
-
+    console.log("follow", ifFollwing._id)
     try {
       const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
