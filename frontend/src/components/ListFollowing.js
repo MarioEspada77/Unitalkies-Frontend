@@ -12,6 +12,20 @@ class ListFollowing extends Component {
         const isFollowing = username.follower === user._id && this.setState({isFollowing: true});
         console.log(isFollowing);
     }
+    getFollows = async () => {
+        const { userProfile, user } = this.props;
+        try {
+          const follow = await followServices.followUser(userProfile, user.username);
+          console.log("FOLLOW", follow);
+          if (follow) {
+            this.setState({
+              isFollowing: true,
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
     getUnfollow = async () => {
         const { user, username } = this.props;
         try {
@@ -32,7 +46,7 @@ class ListFollowing extends Component {
         return (
             <div>
                 <p>{username.followed.username}</p>
-                <Follow isFollowing={isFollowing} getUnfollow={this.getUnfollow}></Follow>
+                <Follow isFollowing={isFollowing} getUnfollow={this.getUnfollow} getFollows={this.getFollows}></Follow>
             </div>
         );
     }

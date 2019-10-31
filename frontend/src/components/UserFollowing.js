@@ -26,7 +26,7 @@ class UserFollowing extends Component {
                 {following.length === 0 && <div>{username} todavía no sigue a ningún usuario</div>}
                 {!loading && 
                         following.map((user) =>{
-                            return ( <ListFollowing username={user} key={`username-${user._id}`}></ListFollowing> )
+                            return ( <ListFollowing userProfile={username} username={user} key={`username-${user._id}`}></ListFollowing> )
                          })
                 }
                 {loading && <div>Cargando usuarios...</div>}
