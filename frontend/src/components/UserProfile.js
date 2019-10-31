@@ -24,7 +24,7 @@ class UserProfile extends Component {
     const follows = await followServices.getFollowersUser(username)
 
     const following = await followServices.getFollowing(username)
-
+    console.log("follows",follows)
     const ifFollwing = await follows.find(element => {
       if (element.follower._id === user._id) {
         return true
