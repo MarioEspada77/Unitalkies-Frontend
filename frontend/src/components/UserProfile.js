@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import profileServices from "../services/profileService";
 import followServices from "../services/followService";
 import { withAuth } from "../Context/AuthContext";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Post from "./Post";
 import Follow from "./Follow";
 
@@ -19,35 +19,39 @@ class UserProfile extends Component {
   async componentDidMount() {
     const { username, user } = this.props;
 
-    const userProfile = await profileServices.listUserProfile(username).catch((error) =>{ this.setState({error: "El perfil que estas buscando no existe o no esta disponible", loading: false})})
+    const userProfile = await profileServices
+      .listUserProfile(username)
+      .catch(error => {
+        this.setState({
+          error: "El perfil que estas buscando no existe o no esta disponible",
+          loading: false
+        });
+      });
 
-    const follows = await followServices.getFollowersUser(username)
+    const follows = await followServices.getFollowersUser(username);
 
-    const following = await followServices.getFollowing(username)
-    console.log("follows",follows)
+    const following = await followServices.getFollowing(username);
+    console.log("follows", follows);
     const ifFollwing = await follows.find(element => {
-      if (element.follower._id === user._id) {
-        return true
+      if (element.follower === user._id) {
+        return true;
       }
     });
-      this.setState({
-        profile: userProfile.userProfile,
-        posts: userProfile.posts,
-        loading: false,
-        follows,
-        following,
-        isFollowing: ifFollwing,
-      })
-  
-
-
+    this.setState({
+      profile: userProfile.userProfile,
+      posts: userProfile.posts,
+      loading: false,
+      follows,
+      following,
+      isFollowing: ifFollwing
+    });
   }
   getFollows = async () => {
     const { follows } = this.state;
     const { username, user } = this.props;
     try {
       const follow = await followServices.followUser(username, user.username);
-      console.log("FOLLOW", follow);
+      // console.log("FOLLOW", follow);
       if (follow) {
         this.setState({
           isFollowing: true,
@@ -61,12 +65,14 @@ class UserProfile extends Component {
   getUnfollow = async () => {
     const { user, username } = this.props;
     const { follows } = this.state;
-    const ifFollwing =  await follows.find(element => {
-      if (element.follower._id === user._id) {
-        return true
+    console.log("FOLLOWS: ", follows);
+    const ifFollwing = await follows.find(element => {
+      if (element.follower === user._id) {
+        return true;
       }
     });
     try {
+      // console.log("UNFOLLOW", ifFollwing);
       const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
       if (unfollow) {
@@ -97,8 +103,18 @@ class UserProfile extends Component {
             {!loading && (
               <div>
                 <p>username: {profile[0].username}</p>
-                {user._id !== profile[0]._id && <Follow isFollowing={isFollowing} getFollows={this.getFollows} getUnfollow={this.getUnfollow}></Follow>}
-                <p><Link to={`/following/${profile[0].username}`}>Siguiendo: {following.length}</Link></p>
+                {user._id !== profile[0]._id && (
+                  <Follow
+                    isFollowing={isFollowing}
+                    getFollows={this.getFollows}
+                    getUnfollow={this.getUnfollow}
+                  ></Follow>
+                )}
+                <p>
+                  <Link to={`/following/${profile[0].username}`}>
+                    Siguiendo: {following.length}
+                  </Link>
+                </p>
                 <p>Seguidores: {follows.length}</p>
                 <div className="user-publications">
                   {posts.length === 0 && (
@@ -113,7 +129,7 @@ class UserProfile extends Component {
             {loading && <div>Cargando perfil del usuario...</div>}
           </>
         )}
-         <div>{error}</div>
+        <div>{error}</div>
       </div>
     );
   }
