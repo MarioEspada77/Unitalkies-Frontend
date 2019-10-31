@@ -13,9 +13,9 @@ class ListFollowing extends Component {
         console.log(isFollowing);
     }
     getFollows = async () => {
-        const { userProfile, user } = this.props;
+        const { username, user } = this.props;
         try {
-          const follow = await followServices.followUser(userProfile, user.username);
+          const follow = await followServices.followUser(username.followed.username, user.username);
           console.log("FOLLOW", follow);
           if (follow) {
             this.setState({
