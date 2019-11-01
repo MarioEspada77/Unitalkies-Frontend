@@ -31,7 +31,7 @@ class Home extends Component {
   updatePost = post => {
     const { posts } = this.state;
     this.setState({
-      posts: [ ...posts, post]
+      posts: [post, ...posts]
     });
   };
   statusPosts = () => {
