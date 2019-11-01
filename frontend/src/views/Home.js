@@ -36,10 +36,17 @@ class Home extends Component {
   };
   statusPosts = () => {
     const { posts } = this.state;
+    const { user } = this.props;
     if (posts.length === 0) {
-      return <div>No hay ninguna publicación que mostrar</div>;
+      return  (
+          <>
+            <WritePost user={user} updatePost={this.updatePost} />
+            <div>No hay ninguna publicación que mostrar</div>
+          </>
+      )
+    
     } else {
-      const { user } = this.props;
+      console.log(posts)
       return (
         <>
           <WritePost user={user} updatePost={this.updatePost} />
