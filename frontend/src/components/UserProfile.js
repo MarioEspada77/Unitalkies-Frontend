@@ -37,6 +37,7 @@ class UserProfile extends Component {
         return true;
       }
     });
+    console.log(ifFollwing);
     this.setState({
       profile: userProfile.userProfile,
       posts: userProfile.posts,
@@ -72,7 +73,7 @@ class UserProfile extends Component {
       }
     });
     try {
-      // console.log("UNFOLLOW", ifFollwing);
+      console.log("UNFOLLOW", ifFollwing);
       const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
       if (unfollow) {

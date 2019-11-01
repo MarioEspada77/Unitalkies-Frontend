@@ -67,6 +67,7 @@ class ListPosts extends Component {
           </i>
         </p>
         <p>{post.text}</p>
+        <p>{post.created_at}</p>
         <p>
           Likes:<b>{likes.length}</b>
         </p>
