@@ -13,7 +13,6 @@ class ListFollowers extends Component {
         const { username, user } = this.props;
         const isFollowing = username.followed === user._id && this.setState({ isFollowing: true });
         const following = await followServices.getFollowing(user.username);
-        console.log("following" , following)
         const ifFollwing = await following.find(element => {
             console.log("element", element.followed._id)
             console.log("USERNAME", username.follower._id)
@@ -29,11 +28,46 @@ class ListFollowers extends Component {
             });
         }
      }
+     getFollows = async () => {
+        const { username, user } = this.props;
+        console.log(username);
+        try {
+          const follow = await followServices.followUser(
+            username.follower.username,
+            user.username
+          );
+          if (follow) {
+            this.setState({
+              isFollowing: true
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getUnfollow = async () => {
+        const { user, username } = this.props;
+        const { isOtherUser, following } = this.state;
+        try {
+          if (isOtherUser) {
+            const unfollow = await followServices.deleteFollow(following._id);
+            this.setState({
+              isFollowing: false
+            });
+          } else {
+            const unfollow = await followServices.deleteFollow(username._id);
+            this.setState({
+              isFollowing: false
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
       
     render() {
         const { isFollowing } = this.state;
         const { username } = this.props;
-        console.log(isFollowing);
         
         return (
             <div>
