@@ -5,30 +5,31 @@ import ListFollowers from "./ListFollowers";
 
 class UserFollowers extends Component {
     state = {
-        following: [],
+        followers: [],
         loading: true,
     }
     async componentDidMount(){
         const { username } =  this.props.match.params;
-        const following = await followServices.getFollowersUser(username)
+        const followers = await followServices.getFollowersUser(username)
         this.setState({
-            following,
+            followers,
             loading: false,
 
         })
     }
     render() {
-        const { following, loading } = this.state;
+        const { followers, loading } = this.state;
         const { username } = this.props.match.params;
-
+        console.log(followers)
         return (
             <div>
-                {following.length === 0 && <div>{username} todavía no sigue a ningún usuario</div>}
                 {!loading && 
-                        following.map((user) =>{
+                        followers.map((user) =>{
                             return ( <ListFollowers userProfile={username} username={user} key={`username-${user._id}`}></ListFollowers> )
                          })
+                         
                 }
+                {followers.length === 0 && <div>{username} todavía no sigue a ningún usuario</div>}
                 {loading && <div>Cargando usuarios...</div>}
 
             </div>
