@@ -29,7 +29,7 @@ class UserFollowers extends Component {
                          })
                          
                 }
-                {followers.length === 0 && <div>{username} todavía no sigue a ningún usuario</div>}
+                {followers.length === 0 && <div>{username} no le sigue ningún usuario</div>}
                 {loading && <div>Cargando usuarios...</div>}
 
             </div>
