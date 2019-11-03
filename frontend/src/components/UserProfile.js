@@ -116,7 +116,7 @@ class UserProfile extends Component {
                     Siguiendo: {following.length}
                   </Link>
                 </p>
-                <p>Seguidores: {follows.length}</p>
+                <Link to={`/followers/${profile[0].username}`}>Seguidores: {follows.length}</Link>
                 <div className="user-publications">
                   {posts.length === 0 && (
                     <p>
