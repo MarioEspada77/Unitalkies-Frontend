@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { withAuth } from "../Context/AuthContext";
+import followServices from "../services/followService";
 
 class ListFollowers extends Component {
     render() {
@@ -10,4 +12,4 @@ class ListFollowers extends Component {
     }
 }
 
-export default ListFollowers;
+export default withAuth(ListFollowers);
