@@ -5,6 +5,7 @@ import { withAuth } from "../Context/AuthContext";
 import { Link } from "react-router-dom";
 import Post from "./Post";
 import Follow from "./Follow";
+import WritePost from "../components/WritePost";
 
 class UserProfile extends Component {
   state = {
@@ -113,6 +114,11 @@ class UserProfile extends Component {
                       getUnfollow={this.getUnfollow}
                     ></Follow>
                     <p>Seguidores: {follows.length}</p>
+                    <WritePost
+                      user={user}
+                      updatePost={this.updatePost}
+                      university={profile[0]._id}
+                    />
                   </>
                 ) : (
                   <>
