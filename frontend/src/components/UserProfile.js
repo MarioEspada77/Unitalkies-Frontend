@@ -112,6 +112,7 @@ class UserProfile extends Component {
                       getFollows={this.getFollows}
                       getUnfollow={this.getUnfollow}
                     ></Follow>
+                    <p>Seguidores: {follows.length}</p>
                   </>
                 ) : (
                   <>
