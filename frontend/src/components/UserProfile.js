@@ -97,34 +97,43 @@ class UserProfile extends Component {
       isFollowing
     } = this.state;
     const { user } = this.props;
+    console.log("PROFILE", profile);
     return (
       <div>
         {!error && (
           <>
             {!loading && (
               <div>
-                <p>username: {profile[0].username}</p>
-                {user._id !== profile[0]._id && (
-                  <Follow
-                    isFollowing={isFollowing}
-                    getFollows={this.getFollows}
-                    getUnfollow={this.getUnfollow}
-                  ></Follow>
-                )}
-                <p>
-                  <Link to={`/following/${profile[0].username}`}>
-                    Siguiendo: {following.length}
-                  </Link>
-                </p>
-                <Link to={`/followers/${profile[0].username}`}>Seguidores: {follows.length}</Link>
-                <div className="user-publications">
-                  {posts.length === 0 && (
+                {profile[0].university_name ? (
+                  <p>University: {profile[0].university_name}</p>
+                ) : (
+                  <>
+                    <p>username: {profile[0].username}</p>
+                    {user._id !== profile[0]._id && (
+                      <Follow
+                        isFollowing={isFollowing}
+                        getFollows={this.getFollows}
+                        getUnfollow={this.getUnfollow}
+                      ></Follow>
+                    )}
                     <p>
-                      Este usuario todavía no ha escrito ninguna publicación
+                      <Link to={`/following/${profile[0].username}`}>
+                        Siguiendo: {following.length}
+                      </Link>
                     </p>
-                  )}{" "}
-                  <Post posts={posts}></Post>
-                </div>
+                    <Link to={`/followers/${profile[0].username}`}>
+                      Seguidores: {follows.length}
+                    </Link>
+                    <div className="user-publications">
+                      {posts.length === 0 && (
+                        <p>
+                          Este usuario todavía no ha escrito ninguna publicación
+                        </p>
+                      )}{" "}
+                      <Post posts={posts}></Post>
+                    </div>
+                  </>
+                )}
               </div>
             )}
             {loading && <div>Cargando perfil del usuario...</div>}
