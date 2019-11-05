@@ -105,7 +105,14 @@ class UserProfile extends Component {
             {!loading && (
               <div>
                 {profile[0].university_name ? (
-                  <p>University: {profile[0].university_name}</p>
+                  <>
+                    <p>University: {profile[0].university_name}</p>
+                    <Follow
+                      isFollowing={isFollowing}
+                      getFollows={this.getFollows}
+                      getUnfollow={this.getUnfollow}
+                    ></Follow>
+                  </>
                 ) : (
                   <>
                     <p>username: {profile[0].username}</p>
