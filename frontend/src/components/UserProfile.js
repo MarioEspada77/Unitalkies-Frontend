@@ -87,6 +87,12 @@ class UserProfile extends Component {
       console.log(error);
     }
   };
+  updatePost = async  post => {
+    const { posts } = this.state;
+    this.setState({
+      posts: [post, ...posts]
+    });
+  };
   render() {
     const {
       profile,
