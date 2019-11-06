@@ -63,7 +63,7 @@ class ListPosts extends Component {
       <div key={`post-${post._id}`} className="post-row">
         <p>
           <i>
-            <b>{post.username.username}</b>
+            <b>{post.username.username} {post.formUni && <span>> {post.formUni.university_name}</span>}</b>
           </i>
         </p>
         <p>{post.text}</p>
