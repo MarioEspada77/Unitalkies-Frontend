@@ -28,12 +28,9 @@ class UserProfile extends Component {
           loading: false
         });
       });
-    console.log("PROFILES", userProfile);
-
     const follows = await followServices.getFollowersUser(username);
 
     const following = await followServices.getFollowing(username);
-    console.log("follows", follows);
     const ifFollwing = await follows.find(element => {
       if (element.follower === user._id) {
         return true;
@@ -67,14 +64,12 @@ class UserProfile extends Component {
   getUnfollow = async () => {
     const { user, username } = this.props;
     const { follows } = this.state;
-    console.log("FOLLOWS: ", follows);
     const ifFollwing = await follows.find(element => {
       if (element.follower === user._id) {
         return true;
       }
     });
     try {
-      console.log("UNFOLLOW", ifFollwing);
       const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
       if (unfollow) {
@@ -104,7 +99,6 @@ class UserProfile extends Component {
       isFollowing
     } = this.state;
     const { user } = this.props;
-    console.log("PROFILE", profile);
     return (
       <div>
         {!error && (
