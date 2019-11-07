@@ -28,6 +28,7 @@ class UserProfile extends Component {
           loading: false
         });
       });
+    console.log("PROFILES", userProfile);
 
     const follows = await followServices.getFollowersUser(username);
 
@@ -53,7 +54,6 @@ class UserProfile extends Component {
     const { username, user } = this.props;
     try {
       const follow = await followServices.followUser(username, user.username);
-      // console.log("FOLLOW", follow);
       if (follow) {
         this.setState({
           isFollowing: true,
@@ -87,7 +87,7 @@ class UserProfile extends Component {
       console.log(error);
     }
   };
-  updatePost = async  post => {
+  updatePost = async post => {
     const { posts } = this.state;
     this.setState({
       posts: [post, ...posts]
@@ -129,12 +129,14 @@ class UserProfile extends Component {
                 ) : (
                   <>
                     <p>username: {profile[0].username}</p>
-                    {user._id !== profile[0]._id && (
+                    {user._id !== profile[0]._id ? (
                       <Follow
                         isFollowing={isFollowing}
                         getFollows={this.getFollows}
                         getUnfollow={this.getUnfollow}
                       ></Follow>
+                    ) : (
+                      <button>Editar perfil</button>
                     )}
                     <p>
                       <Link to={`/following/${profile[0].username}`}>
