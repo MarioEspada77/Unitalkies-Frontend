@@ -4,6 +4,7 @@ import postServices from "../services/postService";
 import Post from "../components/Post";
 import WritePost from "../components/WritePost";
 import { Link } from "react-router-dom";
+import NavPrimary from "../components/NavPrimary";
 
 class Home extends Component {
   state = {
@@ -61,6 +62,7 @@ class Home extends Component {
     const { user } = this.props;
     return (
       <div>
+        <NavPrimary />
         {!error && (
           <>
             <Link to={`/profile/${user.username}`}>Ver perfil</Link>
