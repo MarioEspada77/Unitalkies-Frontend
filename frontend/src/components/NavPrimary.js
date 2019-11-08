@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withAuth } from "../Context/AuthContext";
 import "../css/nav.css";
 
 class nav extends Component {
@@ -11,4 +12,4 @@ class nav extends Component {
     }
 }
 
-export default nav;
+export default withAuth(nav);
