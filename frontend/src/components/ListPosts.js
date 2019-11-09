@@ -60,10 +60,7 @@ class ListPosts extends Component {
     const { post, user } = this.props;
     const { likes } = this.state;
     return (
-      <div
-        key={`post-${post._id}`}
-        className="shadow-sm p-3 mb-5 bg-light rounded"
-      >
+      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded">
         <p>
           <i>
             <b>
