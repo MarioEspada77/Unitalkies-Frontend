@@ -60,14 +60,22 @@ class ListPosts extends Component {
     const { post, user } = this.props;
     const { likes } = this.state;
     return (
-      <div key={`post-${post._id}`} className="post-row">
+      <div
+        key={`post-${post._id}`}
+        className="shadow-sm p-3 mb-5 bg-light rounded"
+      >
         <p>
           <i>
-            <b>{post.username.username} {post.formUni && <span>> {post.formUni.university_name}</span>}</b>
+            <b>
+              {post.username.username}{" "}
+              {post.formUni && <span>> {post.formUni.university_name}</span>}
+            </b>
           </i>
         </p>
         <p>{post.text}</p>
-        <p>{post.created_at}</p>
+        <div className="blockquote-footer">
+          <p>{post.created_at}</p>
+        </div>
         <p>
           Likes:<b>{likes.length}</b>
         </p>
