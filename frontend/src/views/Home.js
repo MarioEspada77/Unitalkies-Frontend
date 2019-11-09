@@ -5,6 +5,7 @@ import Post from "../components/Post";
 import WritePost from "../components/WritePost";
 import { Link } from "react-router-dom";
 import NavPrimary from "../components/NavPrimary";
+import "../css/home.css";
 
 class Home extends Component {
   state = {
@@ -60,13 +61,18 @@ class Home extends Component {
     const { posts, loading, error } = this.state;
     const { user } = this.props;
     return (
-      <div>
+      <div className="container-fluid">
         <NavPrimary />
         {!error && (
-          <>
-            {!loading && this.statusPosts()}
+          <div className="row">
+            <div className="col-md-2 shadow-sm p-3 mb-5 rounded margin-home">
+              <p>user profile card</p>
+            </div>
+            <div className="col-md-8 margin-home">
+              {!loading && this.statusPosts()}
+            </div>
             {loading && <div>Cargando publicaciones...</div>}
-          </>
+          </div>
         )}
         <div>{error}</div>
       </div>
