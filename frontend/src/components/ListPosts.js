@@ -5,8 +5,10 @@ import { ReactComponent as Heart } from "../img/heart.svg";
 import styled from "styled-components";
 
 const HeartWrap = styled.span`
-  color: red;
-  font-size: 20px;
+  i {
+    color: red;
+    font-size: 20px;
+  }
 `;
 
 class ListPosts extends Component {
@@ -54,19 +56,19 @@ class ListPosts extends Component {
   };
   ifExistLike = () => {
     const { user } = this.props;
-    const { likes, filled } = this.state;
+    const { likes } = this.state;
     let ifExistLikes = likes.indexOf(user._id);
 
     if (ifExistLikes > -1) {
       return (
-        <HeartWrap filled={filled}>
-          <i className="fa fa-heart" onClick={this.makeUnlike}></i>
+        <HeartWrap>
+          <i className="fa fa-heart " onClick={this.makeUnlike}></i>
         </HeartWrap>
       );
     } else {
       return (
         <>
-          <HeartWrap filled={filled}>
+          <HeartWrap>
             <i className="fa fa-heart-o" onClick={this.makeLike}></i>
           </HeartWrap>
         </>
