@@ -1,10 +1,18 @@
 import React, { Component } from "react";
 import postServices from "../services/postService";
 import { withAuth } from "../Context/AuthContext";
+import { ReactComponent as Heart } from "../img/heart.svg";
+import styled from "styled-components";
+
+const HeartWrap = styled.span`
+  color: red;
+  font-size: 20px;
+`;
 
 class ListPosts extends Component {
   state = {
-    likes: []
+    likes: [],
+    filled: false
   };
   componentDidMount() {
     const { post } = this.props;
@@ -46,27 +54,21 @@ class ListPosts extends Component {
   };
   ifExistLike = () => {
     const { user } = this.props;
-    const { likes } = this.state;
+    const { likes, filled } = this.state;
     let ifExistLikes = likes.indexOf(user._id);
 
     if (ifExistLikes > -1) {
       return (
-        <>
-          <i
-            class="fa fa-heart"
-            style={{ fontSize: "20px", color: "red" }}
-            onClick={this.makeUnlike}
-          ></i>
-        </>
+        <HeartWrap filled={filled}>
+          <i className="fa fa-heart" onClick={this.makeUnlike}></i>
+        </HeartWrap>
       );
     } else {
       return (
         <>
-          <i
-            class="fa fa-heart-o"
-            style={{ fontSize: "20px", color: "red" }}
-            onClick={this.makeLike}
-          ></i>
+          <HeartWrap filled={filled}>
+            <i className="fa fa-heart-o" onClick={this.makeLike}></i>
+          </HeartWrap>
         </>
       );
     }
