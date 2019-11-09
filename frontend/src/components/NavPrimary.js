@@ -7,17 +7,16 @@ class nav extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
-        <div className="navbar fixed-top primary-color padding-nav">
-          <div className="username-profile">
-            <div className="d-flex flex-row-reverse">
-              <div className="p-2">
-                <Link to={`/profile/${user.username}`}>{user.username}</Link>
-              </div>
-            </div>
+      <>
+        <div className="fixed-top primary-color padding-nav d-flex">
+          <div class="p-2 mr-auto ">Unitalkies</div>
+          <div class="p-2 ">Notificaciones</div>
+          <div class="p-2 ">
+            {" "}
+            <Link to={`/profile/${user.username}`}>{user.username}</Link>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
