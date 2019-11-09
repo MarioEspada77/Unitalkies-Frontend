@@ -39,15 +39,14 @@ class Home extends Component {
     const { posts } = this.state;
     const { user } = this.props;
     if (posts.length === 0) {
-      return  (
-          <>
-            <WritePost user={user} updatePost={this.updatePost} />
-            <div>No hay ninguna publicación que mostrar</div>
-          </>
-      )
-    
+      return (
+        <>
+          <WritePost user={user} updatePost={this.updatePost} />
+          <div>No hay ninguna publicación que mostrar</div>
+        </>
+      );
     } else {
-      console.log(posts)
+      console.log(posts);
       return (
         <>
           <WritePost user={user} updatePost={this.updatePost} />
@@ -65,7 +64,6 @@ class Home extends Component {
         <NavPrimary />
         {!error && (
           <>
-            <Link to={`/profile/${user.username}`}>Ver perfil</Link>
             {!loading && this.statusPosts()}
             {loading && <div>Cargando publicaciones...</div>}
           </>
