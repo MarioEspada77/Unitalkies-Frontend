@@ -10,7 +10,11 @@ class nav extends Component {
       <div>
         <div className="navbar fixed-top primary-color padding-nav">
           <div className="username-profile">
-            <Link to={`/profile/${user.username}`}>{user.username}</Link>
+            <div className="d-flex flex-row-reverse">
+              <div className="p-2">
+                <Link to={`/profile/${user.username}`}>{user.username}</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

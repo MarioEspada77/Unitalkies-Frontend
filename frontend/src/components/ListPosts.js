@@ -50,9 +50,25 @@ class ListPosts extends Component {
     let ifExistLikes = likes.indexOf(user._id);
 
     if (ifExistLikes > -1) {
-      return <button onClick={this.makeUnlike}>Ya no me gusta</button>;
+      return (
+        <>
+          <i
+            class="fa fa-heart"
+            style={{ fontSize: "20px", color: "red" }}
+            onClick={this.makeUnlike}
+          ></i>
+        </>
+      );
     } else {
-      return <button onClick={this.makeLike}>Me gusta</button>;
+      return (
+        <>
+          <i
+            class="fa fa-heart-o"
+            style={{ fontSize: "20px", color: "red" }}
+            onClick={this.makeLike}
+          ></i>
+        </>
+      );
     }
   };
 
@@ -64,7 +80,7 @@ class ListPosts extends Component {
         <p>
           <i>
             <b>
-              {post.username.username}{" "}
+              {post.username.username}
               {post.formUni && <span>> {post.formUni.university_name}</span>}
             </b>
           </i>
