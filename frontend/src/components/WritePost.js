@@ -31,14 +31,16 @@ class WritePost extends Component {
     return (
       <div>
         <form onSubmit={this.addPost}>
-          <input
-            type="text"
-            name="text"
-            placeholder="En que estás pensando?"
-            value={text}
-            onChange={this.handleInput}
-          ></input>
-          <button>Publicar</button>
+          <div className="input-group-append">
+              <input className="form-control"
+                type="text"
+                name="text"
+                placeholder="En que estás pensando?"
+                value={text}
+                onChange={this.handleInput}
+              ></input>
+          </div>
+          <button className="btn btn-success">Publicar</button>
         </form>
       </div>
     );
