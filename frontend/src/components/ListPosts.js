@@ -88,12 +88,12 @@ class ListPosts extends Component {
         <p>
           <i>
               {post.username.username} <Moment fromNow>{DateToFormat}</Moment>
-              {post.formUni && <> <span>> {post.formUni.university_name}</span><span> </span><span><Moment fromNow>{DateToFormat}</Moment></span> </>}
+              {post.formUni &&  <span>> {post.formUni.university_name}</span>}
           </i>
         </p>
         <p>{post.text}</p>
         <div className="blockquote-footer">
-          <p><Moment parse="YYYY-MM-DD HH:mm">{DateToFormat}</Moment></p>
+          <p><Moment parse="YYYY-MM-DD">{DateToFormat}</Moment></p>
         </div>
         <p>
           Likes:<b>{likes.length}</b>
