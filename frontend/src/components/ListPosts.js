@@ -3,6 +3,7 @@ import postServices from "../services/postService";
 import { withAuth } from "../Context/AuthContext";
 import { ReactComponent as Heart } from "../img/heart.svg";
 import styled from "styled-components";
+import "../css/post.css";
 
 const HeartWrap = styled.span`
   i {
@@ -80,7 +81,7 @@ class ListPosts extends Component {
     const { post, user } = this.props;
     const { likes } = this.state;
     return (
-      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded">
+      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded card-color">
         <p>
           <i>
             <b>

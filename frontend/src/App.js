@@ -6,6 +6,7 @@ import Login from "./views/auth/Login";
 import Signup from "./views/auth/Signup";
 import { withAuth } from "./Context/AuthContext";
 
+import "./css/App.css";
 import PrivateRoute from "./components/PrivateRoute";
 import AnonRoute from "./components/AnonRoute";
 import Home from "./views/Home";
@@ -17,7 +18,7 @@ class App extends Component {
   render() {
     const { handleLogout } = this.props;
     return (
-      <>
+      <div className="background-page">
         <Router>
           <AnonRoute exact path="/login" component={Login} />
           <AnonRoute exact path="/signup" component={Signup} />
@@ -38,7 +39,7 @@ class App extends Component {
             component={UserFollowing}
           />
         </Router>
-      </>
+      </div>
     );
   }
 }

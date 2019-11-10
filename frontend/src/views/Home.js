@@ -5,7 +5,8 @@ import Post from "../components/Post";
 import WritePost from "../components/WritePost";
 import { Link } from "react-router-dom";
 import NavPrimary from "../components/NavPrimary";
-import "../css/home.css";
+import "../css/home.scss";
+import "../css/post.css";
 
 class Home extends Component {
   state = {
@@ -65,10 +66,35 @@ class Home extends Component {
         <NavPrimary />
         {!error && (
           <div className="row">
-            <div className="col-md-2 shadow-sm p-3 mb-5 rounded margin-home">
-              <p>user profile card</p>
+            <div className="col-md-4 margin-home">
+            <div className="user-card">
+                 <div className="container">
+                    <div className="information">
+                        <img src="" alt="avatar" className="avatar" />
+                        <div className="name">@{user.username}</div>
+                        <div className="position">Universidad</div>
+      
+                      <div className="stats">
+                          <span className="followers">
+                              <span className="value">0</span>
+                              <span className="label">Seguidores</span>
+                         </span> 
+        
+                          <span className="following">
+                              <span className="value">0</span>
+                              <span className="label">Siguiendo</span>
+                          </span>
+        
+                          <span className="stories">
+                              <span className="value">0</span>
+                              <span className="label">Post</span>
+                         </span>
+                      </div> 
+                     </div> 
+                   </div> 
             </div>
-            <div className="col-md-8 margin-home">
+          </div>
+            <div className="col-md-6 margin-home">
               {!loading && this.statusPosts()}
             </div>
             {loading && <div>Cargando publicaciones...</div>}
