@@ -51,7 +51,7 @@ class Home extends Component {
       console.log(posts);
       return (
         <>
-          <WritePost user={user} updatePost={this.updatePost} />
+          <div className="shadow-sm p-3 mb-5 rounded card-color"><WritePost user={user} updatePost={this.updatePost} /></div>
           <Post posts={posts}></Post>
         </>
       );
