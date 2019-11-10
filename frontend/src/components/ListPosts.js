@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import postServices from "../services/postService";
 import { withAuth } from "../Context/AuthContext";
+import Moment from 'react-moment';
+import 'moment-timezone';
 import { ReactComponent as Heart } from "../img/heart.svg";
 import styled from "styled-components";
 import "../css/post.css";
@@ -80,19 +82,18 @@ class ListPosts extends Component {
   render() {
     const { post, user } = this.props;
     const { likes } = this.state;
+    const DateToFormat = post.created_at
     return (
       <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded card-color">
         <p>
           <i>
-            <b>
               {post.username.username}
-              {post.formUni && <span>> {post.formUni.university_name}</span>}
-            </b>
+              {post.formUni && <> <span>> {post.formUni.university_name}</span><span> </span><span><Moment fromNow>{DateToFormat}</Moment></span> </>}
           </i>
         </p>
         <p>{post.text}</p>
         <div className="blockquote-footer">
-          <p>{post.created_at}</p>
+          <p><Moment parse="YYYY-MM-DD HH:mm">{DateToFormat}</Moment></p>
         </div>
         <p>
           Likes:<b>{likes.length}</b>
