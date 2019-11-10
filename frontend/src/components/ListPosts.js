@@ -87,7 +87,7 @@ class ListPosts extends Component {
       <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded card-color">
         <p>
           <i>
-              {post.username.username} <Moment fromNow>{DateToFormat}</Moment>
+              {post.username.username} · <Moment fromNow>{DateToFormat}</Moment>
               {post.formUni &&  <span>> {post.formUni.university_name}</span>}
           </i>
         </p>
