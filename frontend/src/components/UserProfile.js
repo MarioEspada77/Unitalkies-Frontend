@@ -32,11 +32,11 @@ class UserProfile extends Component {
 
     const following = await followServices.getFollowing(username);
     const ifFollwing = await follows.find(element => {
-      if (element.follower === user._id) {
+      if (element.follower._id === user._id) {
         return true;
       }
     });
-    console.log(ifFollwing);
+    console.log("FOLLOWING",ifFollwing);
     this.setState({
       profile: userProfile.userProfile,
       posts: userProfile.posts,
@@ -65,7 +65,7 @@ class UserProfile extends Component {
     const { user, username } = this.props;
     const { follows } = this.state;
     const ifFollwing = await follows.find(element => {
-      if (element.follower === user._id) {
+      if (element.follower._id === user._id) {
         return true;
       }
     });
