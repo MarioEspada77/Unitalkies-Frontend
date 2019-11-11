@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import NavPrimary from "../components/NavPrimary";
 import "../css/home.scss";
 import "../css/post.css";
+import image from "../img/image_profile.jpg";
 
 class Home extends Component {
   state = {
@@ -43,8 +44,8 @@ class Home extends Component {
     if (posts.length === 0) {
       return (
         <>
-          <WritePost user={user} updatePost={this.updatePost} />
-          <div>No hay ninguna publicación que mostrar</div>
+           <div className="shadow-sm p-3 mb-5 rounded card-color"><WritePost user={user} updatePost={this.updatePost} /></div>
+          <div className="shadow-sm p-3 mb-5 rounded card-color">No hay ninguna publicación que mostrar</div>
         </>
       );
     } else {
@@ -70,7 +71,7 @@ class Home extends Component {
             <div className="user-card">
                  <div className="container">
                     <div className="information">
-                        <img src="" alt="avatar" className="avatar" />
+                        <img src={image} alt="avatar" className="avatar rounded-circle" width="100" />
                         <div className="name">@{user.username}</div>
                         <div className="position">Universidad</div>
       
