@@ -11,7 +11,7 @@ class ListFollowers extends Component {
       };
      async componentDidMount(){
         const { username, user } = this.props;
-        const isFollowing = username.followed === user._id && this.setState({ isFollowing: true });
+        const isFollowing = username.followed._id === user._id && this.setState({ isFollowing: true });
         const following = await followServices.getFollowing(user.username);
         const ifFollwing = await following.find(element => {
             console.log("element", element.followed._id)
