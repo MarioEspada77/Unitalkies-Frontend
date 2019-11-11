@@ -4,17 +4,18 @@ import "../css/home.scss";
 
 class WritePost extends Component {
   state = {
-    text: ""
+    text: "",
+    disabled: true,
   };
   handleInput = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
   addPost = e => {
     e.preventDefault();
     const { user, updatePost, university } = this.props;
-    const { text } = this.state;
+    const { text, caracters } = this.state;
     const username = user.username;
     postServices
       .createPost(username, text, university)
@@ -28,7 +29,7 @@ class WritePost extends Component {
 
   render() {
     const { addPost } = this.props;
-    const { text } = this.state;
+    const { text, disabled } = this.state;
     return (
       <div>
         <form onSubmit={this.addPost} >
@@ -42,7 +43,7 @@ class WritePost extends Component {
               ></input>
           </div>
           <div className="text-right button-page">
-            <button className="button-WritePost ">Publicar</button>
+            <button className="button-WritePost disabled">Publicar</button>
           </div>
         </form>
       </div>
