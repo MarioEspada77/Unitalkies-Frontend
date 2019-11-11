@@ -96,9 +96,9 @@ class Home extends Component {
             </div>
           </div>
             <div className="col-md-6 margin-home">
+              {loading && <div className="loading"><div className="spinner-border loading"></div></div>}
               {!loading && this.statusPosts()}
             </div>
-            {loading && <div>Cargando publicaciones...</div>}
           </div>
         )}
         <div>{error}</div>
