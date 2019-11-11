@@ -67,8 +67,8 @@ class Home extends Component {
         <NavPrimary />
         {!error && (
           <div className="row">
-            <div className="col-md-4 margin-home">
-            <div className="user-card">
+            <div className="col-md-4 ">
+            <div className="user-card margin-home">
                  <div className="container">
                     <div className="information">
                         <img src={image} alt="avatar" className="avatar rounded-circle" width="100" />
