@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import { Link } from "react-router-dom";
 import "../css/nav.css";
+import "../css/notification.scss";
 import notifificationServices from "../services/notificationService";
 
 class nav extends Component {
@@ -21,7 +22,11 @@ class nav extends Component {
       <>
         <div className="fixed-top primary-color padding-nav d-flex">
           <div className="p-2 mr-auto ">Unitalkies</div>
-          <div className="p-2 "><i class="fa fa-bell-o"><span class="badge badge-light">{notifications.length}</span></i></div>
+          <div className="p-2 ">
+          <i className="fa fa-bell notification">
+                    {notifications.length > 0 && <span class="badge">{notifications.length}</span> }     
+          </i>
+          </div>
           <div className="p-2 ">
             <Link to={`/profile/${user.username}`}>{user.username}</Link>
           </div>
