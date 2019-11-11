@@ -13,6 +13,7 @@ import Home from "./views/Home";
 import UserProfileView from "./views/UserProfileView";
 import UserFollowers from "./components/UserFollowers";
 import UserFollowing from "./components/UserFollowing";
+import Notifications from "./components/Notifications";
 
 class App extends Component {
   render() {
@@ -37,6 +38,11 @@ class App extends Component {
             exact
             path="/following/:username"
             component={UserFollowing}
+          />
+          <PrivateRoute
+            exact
+            path="/notifications/all"
+            component={Notifications}
           />
         </Router>
       </div>
