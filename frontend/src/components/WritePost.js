@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import postServices from "../services/postService";
+import "../css/home.scss";
 
 class WritePost extends Component {
   state = {
@@ -30,7 +31,7 @@ class WritePost extends Component {
     const { text } = this.state;
     return (
       <div>
-        <form onSubmit={this.addPost}>
+        <form onSubmit={this.addPost} >
           <div className="input-group-append">
               <input className="form-control"
                 type="text"
@@ -40,7 +41,9 @@ class WritePost extends Component {
                 onChange={this.handleInput}
               ></input>
           </div>
-          <button className="btn btn-success">Publicar</button>
+          <div className="text-right">
+            <button className="btn btn-success button-WritePost">Publicar</button>
+          </div>
         </form>
       </div>
     );
