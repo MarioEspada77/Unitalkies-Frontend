@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import { Link } from "react-router-dom";
 import "../css/nav.css";
+import notifificationServices from "../services/notificationService";
 
 class nav extends Component {
+  state = {
+    notifications: [],
+  }
   render() {
     const { user, handleLogout } = this.props;
     return (
