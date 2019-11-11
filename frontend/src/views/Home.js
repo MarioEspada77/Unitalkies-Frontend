@@ -12,15 +12,19 @@ import image from "../img/image_profile.jpg";
 class Home extends Component {
   state = {
     posts: [],
+    userPosts: [],
     loading: true,
     error: undefined
   };
   async componentDidMount() {
+    const { user } = this.props;
     postServices
       .listAllPost()
       .then(posts => {
+        const userPosts = posts.filter(elem => elem.username._id === user._id);
         this.setState({
           posts,
+          userPosts,
           loading: false
         });
       })
@@ -60,7 +64,7 @@ class Home extends Component {
   };
 
   render() {
-    const { posts, loading, error } = this.state;
+    const { posts, loading, error, userPosts } = this.state;
     const { user } = this.props;
     return (
       <div className="container-fluid">
@@ -86,7 +90,7 @@ class Home extends Component {
                           </span>
         
                           <span className="stories">
-                              <span className="value">0</span>
+                              <span className="value">{userPosts.length}</span>
                               <span className="label">Post</span>
                          </span>
                       </div> 
