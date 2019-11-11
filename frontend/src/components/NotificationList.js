@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class NotificationList extends Component {
 
@@ -10,7 +11,7 @@ class NotificationList extends Component {
         const { notification } = this.props;
         return (
             <div>
-            <p>{notification.notificationFrom.username} {notification.text}</p>
+            <p> <Link to={`/profile/${notification.notificationFrom.username}`}>{notification.notificationFrom.username}</Link> {notification.text}</p>
             </div>
         );
     }
