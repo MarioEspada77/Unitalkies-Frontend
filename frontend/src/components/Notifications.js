@@ -14,6 +14,7 @@ class Notifications extends Component {
       }
     render() {
         const { notifications } = this.state;
+        console.log(notifications);
         return (
             <div>
                 {notifications.map((notification) =>{

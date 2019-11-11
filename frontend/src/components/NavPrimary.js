@@ -23,9 +23,11 @@ class nav extends Component {
         <div className="fixed-top primary-color padding-nav d-flex">
           <div className="p-2 mr-auto ">Unitalkies</div>
           <div className="p-2 ">
-          <i className="fa fa-bell notification">
-                    {notifications.length > 0 && <span class="badge">{notifications.length}</span> }     
-          </i>
+            <Link to={`/notifications/all`}>
+                <i className="fa fa-bell notification">
+                  {notifications.length > 0 && <span class="badge">{notifications.length}</span> }     
+                 </i>
+            </Link>
           </div>
           <div className="p-2 ">
             <Link to={`/profile/${user.username}`}>{user.username}</Link>
