@@ -41,8 +41,8 @@ class WritePost extends Component {
                 onChange={this.handleInput}
               ></input>
           </div>
-          <div className="text-right">
-            <button className="btn btn-success button-WritePost">Publicar</button>
+          <div className="text-right button-page">
+            <button className="button-WritePost ">Publicar</button>
           </div>
         </form>
       </div>
