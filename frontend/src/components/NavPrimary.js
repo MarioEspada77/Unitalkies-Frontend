@@ -8,13 +8,20 @@ class nav extends Component {
   state = {
     notifications: [],
   }
+  async componentDidMount(){
+    const notifications = await notifificationServices.getAllNotifications();
+   this.setState({
+     notifications,
+   })
+  }
   render() {
     const { user, handleLogout } = this.props;
+    const { notifications } = this.state;
     return (
       <>
         <div className="fixed-top primary-color padding-nav d-flex">
           <div className="p-2 mr-auto ">Unitalkies</div>
-          <div className="p-2 ">Notificaciones</div>
+          <div className="p-2 "><i class="fa fa-bell-o"><span class="badge badge-light">{notifications.length}</span></i></div>
           <div className="p-2 ">
             <Link to={`/profile/${user.username}`}>{user.username}</Link>
           </div>
