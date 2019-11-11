@@ -25,7 +25,7 @@ class nav extends Component {
           <div className="p-2 ">
             <Link to={`/notifications/all`}>
                 <i className="fa fa-bell notification">
-                  {notifications.length > 0 && <span class="badge">{notifications.length}</span> }     
+                  {notifications.length > 0 && <span className="badge">{notifications.length}</span> }     
                  </i>
             </Link>
           </div>
