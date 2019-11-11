@@ -28,7 +28,7 @@ class Home extends Component {
         console.log(error);
         this.setState({
           loading: false,
-          error: "No ha sido posible cargar las publicaciones"
+          error: "En estos mementos no ha sido posible cargar las publicaciones"
         });
       });
   }
@@ -45,7 +45,7 @@ class Home extends Component {
       return (
         <>
            <div className="shadow-sm p-3 mb-5 rounded card-color"><WritePost user={user} updatePost={this.updatePost} /></div>
-          <div className="shadow-sm p-3 mb-5 rounded card-color">No hay ninguna publicación que mostrar</div>
+           <div className="shadow-sm p-3 mb-5 rounded card-color">No hay ninguna publicación que mostrar</div>
         </>
       );
     } else {
@@ -65,7 +65,6 @@ class Home extends Component {
     return (
       <div className="container-fluid">
         <NavPrimary />
-        {!error && (
           <div className="row">
             <div className="col-md-4 ">
             <div className="user-card margin-home">
@@ -97,11 +96,15 @@ class Home extends Component {
           </div>
             <div className="col-md-6 margin-home">
               {loading && <div className="loading"><div className="spinner-border loading"></div></div>}
-              {!loading && this.statusPosts()}
+              {!error ? (
+                !loading && this.statusPosts()
+              ) : (
+                <div className ="shadow-sm p-3 mb-5 rounded card-color">
+                  <p>{error}</p>
+                </div>
+              )} 
             </div>
           </div>
-        )}
-        <div>{error}</div>
       </div>
     );
   }
