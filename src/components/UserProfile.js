@@ -35,6 +35,15 @@ const Posts = styled.div`
     display-flex: column;
     width: 600px;
 `
+const UserFollows = styled.div`
+    width: 600px;
+    background-color: white;
+    margin-bottom: 40px;
+    padding: 20px;
+`
+const UserSpan = styled.span`
+    margin-right: 10px;
+`
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -93,10 +102,11 @@ class UserProfile extends Component {
     const { user, username } = this.props;
     const { follows } = this.state;
     const ifFollwing = await follows.find(element => {
-      if (element.follower._id === user._id) {
+      if (element.follower === user._id) {
         return true;
       }
     });
+    console.log(ifFollwing)
     try {
       const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
@@ -164,14 +174,6 @@ class UserProfile extends Component {
                     ) : (
                       <button>Editar perfil</button>
                     )}
-                    <p>
-                      <Link to={`/following/${profile[0].username}`}>
-                        Siguiendo: {following.length}
-                      </Link>
-                    </p>
-                    <Link to={`/followers/${profile[0].username}`}>
-                      Seguidores: {follows.length}
-                    </Link>
                   </UserCard>
                     <div className="user-publications">
                       {posts.length === 0 && (
@@ -179,6 +181,21 @@ class UserProfile extends Component {
                           Este usuario todavía no ha escrito ninguna publicación
                         </p>
                       )}{" "}
+                      <UserFollows>
+                          <UserSpan>
+                              Publicaciones: {posts.length}
+                          </UserSpan>
+                          <UserSpan>
+                            <Link to={`/following/${profile[0].username}`}>
+                              Siguiendo: {following.length}
+                            </Link>
+                          </UserSpan>
+                          <UserSpan>
+                            <Link to={`/followers/${profile[0].username}`}>
+                              Seguidores: {follows.length}
+                            </Link>
+                          </UserSpan>
+                        </UserFollows>
                       <Posts>
                         <Post posts={posts}></Post>
                       </Posts>
