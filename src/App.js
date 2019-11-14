@@ -14,38 +14,42 @@ import UserProfileView from "./views/UserProfileView";
 import UserFollowers from "./components/UserFollowers";
 import UserFollowing from "./components/UserFollowing";
 import Notifications from "./components/Notifications";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles";
 
 class App extends Component {
   render() {
     const { handleLogout } = this.props;
     return (
-      <div className="background-page">
-        <Router>
-          <AnonRoute exact path="/login" component={Login} />
-          <AnonRoute exact path="/signup" component={Signup} />
-          <PrivateRoute exact path="/home" component={Home} />
-          <PrivateRoute
-            exact
-            path="/profile/:username"
-            component={UserProfileView}
-          />
-          <PrivateRoute
-            exact
-            path="/followers/:username"
-            component={UserFollowers}
-          />
-          <PrivateRoute
-            exact
-            path="/following/:username"
-            component={UserFollowing}
-          />
-          <PrivateRoute
-            exact
-            path="/notifications/all"
-            component={Notifications}
-          />
-        </Router>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="background-page">
+          <Router>
+            <AnonRoute exact path="/login" component={Login} />
+            <AnonRoute exact path="/signup" component={Signup} />
+            <PrivateRoute exact path="/home" component={Home} />
+            <PrivateRoute
+              exact
+              path="/profile/:username"
+              component={UserProfileView}
+            />
+            <PrivateRoute
+              exact
+              path="/followers/:username"
+              component={UserFollowers}
+            />
+            <PrivateRoute
+              exact
+              path="/following/:username"
+              component={UserFollowing}
+            />
+            <PrivateRoute
+              exact
+              path="/notifications/all"
+              component={Notifications}
+            />
+          </Router>
+        </div>
+      </ThemeProvider>
     );
   }
 }
