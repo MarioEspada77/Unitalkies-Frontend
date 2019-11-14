@@ -183,16 +183,16 @@ class UserProfile extends Component {
                       )}{" "}
                       <UserFollows>
                           <UserSpan>
-                              Publicaciones: {posts.length}
+                              Publicaciones {posts.length}
                           </UserSpan>
                           <UserSpan>
                             <Link to={`/following/${profile[0].username}`}>
-                              Siguiendo: {following.length}
+                              Siguiendo {following.length}
                             </Link>
                           </UserSpan>
                           <UserSpan>
                             <Link to={`/followers/${profile[0].username}`}>
-                              Seguidores: {follows.length}
+                              Seguidores {follows.length}
                             </Link>
                           </UserSpan>
                         </UserFollows>
