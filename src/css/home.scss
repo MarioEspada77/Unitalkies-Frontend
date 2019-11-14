@@ -1,11 +1,10 @@
 .margin-home {
   margin-top: 100px;
 }
-.user-card {  
+.user-card {
   font: 13px/23px "Raleway", Arial, sans-serif;
   color: black;
   padding: 40px 0;
-  
 }
 
 .container {
@@ -39,43 +38,34 @@
   margin: auto;
   border-top: 1px solid #ced5e0;
   width: 240px;
-  
-  .followers, .following, .stories {
+
+  .followers,
+  .following,
+  .stories {
     display: inline-block;
     padding: 6px 10px 0;
   }
-  
-  .followers, .following {
+
+  .followers,
+  .following {
     border-right: 1px solid #ced5e0;
   }
-  
+
   .value {
     font-size: 18px;
     font-weight: 600;
   }
-  
+
   .label {
     display: block;
     font-size: 14px;
-    color:#8c98a8;
+    color: #8c98a8;
   }
 }
-.button-WritePost{
-  margin-top: 10px;
-  display: inline-block;
-  font-weight: 400;
-  background-color: tomato;
-  text-align: center;
-  vertical-align: middle;
-  border: 1px solid tomato;
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: .25rem;
-}
-.fixed-user-card{
+
+.fixed-user-card {
   position: fixed;
 }
-.loading{
+.loading {
   text-align: center;
 }
