@@ -1,6 +1,7 @@
-.card-color{
-    background-color: #fff;
+.card-color {
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
 }
-.user-card{
-    height: 200px;
+.user-card {
+  height: 200px;
 }
