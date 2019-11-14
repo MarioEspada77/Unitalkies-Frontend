@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import postServices from "../services/postService";
 import "../css/home.scss";
+import styled from "styled-components";
+
+const ButtonWritePost = styled.button`
+  margin-top: 10px;
+  display: inline-block;
+  background-color: ${({ theme }) => theme.colors.primary}
+  text-align: center;
+  border: 1px solid ${({ theme }) => theme.colors.primary}
+  border-radius: 0.25rem;
+  margin-top: 10px;
+  padding: 4px;
+  width: 120px;
+`;
 
 class WritePost extends Component {
   state = {
@@ -43,8 +56,8 @@ class WritePost extends Component {
               onChange={this.handleInput}
             ></textarea>
           </div>
-          <div className="text-right button-page">
-            <button className="button-WritePost disabled">Publicar</button>
+          <div className="text-right">
+            <ButtonWritePost>Publicar</ButtonWritePost>
           </div>
         </form>
       </div>
