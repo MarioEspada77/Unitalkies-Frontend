@@ -20,7 +20,7 @@ const UserWrapper = styled.div`
 `
 const UserCard = styled.div`
     flex-direction: row;
-    width: 40%;
+    width: 30%;
     background-color: white;
     margin-left:20px;
     margin-right: 20px;
@@ -33,10 +33,10 @@ const UserInfo = styled.div`
 `
 const Posts = styled.div`
     display-flex: column;
-    width: 600px;
+    width: 800px;
 `
 const UserFollows = styled.div`
-    width: 600px;
+    width: 800px;
     background-color: white;
     margin-bottom: 40px;
     padding: 20px;
