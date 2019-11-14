@@ -16,14 +16,19 @@ import UserFollowing from "./components/UserFollowing";
 import Notifications from "./components/Notifications";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./styles";
+import NavPrimary from "./components/NavPrimary";
 
 class App extends Component {
+  state = {
+    actualTheme: "light"
+  };
   render() {
     const { handleLogout } = this.props;
     return (
       <ThemeProvider theme={theme}>
         <div className="background-page">
           <Router>
+            <NavPrimary />
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
             <PrivateRoute exact path="/home" component={Home} />

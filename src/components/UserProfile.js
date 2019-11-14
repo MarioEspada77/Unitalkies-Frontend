@@ -144,7 +144,6 @@ class UserProfile extends Component {
       <div>
         {!error && (
           <div className="user-profile">
-            <NavPrimary />
             {!loading && (
               <UserWrapper>
                 {profile[0].university_name ? (
