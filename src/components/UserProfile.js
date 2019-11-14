@@ -20,9 +20,20 @@ const UserWrapper = styled.div`
 `
 const UserCard = styled.div`
     flex-direction: row;
+    width: 40%;
+    background-color: white;
+    margin-left:20px;
+    margin-right: 20px;
+    padding: 20px;
+    height: 200px;
+    text-align: center;
 `
 const UserInfo = styled.div`
     margin-left: 20px;
+`
+const Posts = styled.div`
+    display-flex: column;
+    width: 600px;
 `
 class UserProfile extends Component {
   state = {
@@ -142,6 +153,7 @@ class UserProfile extends Component {
                   </UserCard>
                 ) : (
                   <>
+                  <UserCard>
                     <p>username: {profile[0].username}</p>
                     {user._id !== profile[0]._id ? (
                       <Follow
@@ -160,13 +172,16 @@ class UserProfile extends Component {
                     <Link to={`/followers/${profile[0].username}`}>
                       Seguidores: {follows.length}
                     </Link>
+                  </UserCard>
                     <div className="user-publications">
                       {posts.length === 0 && (
                         <p>
                           Este usuario todavía no ha escrito ninguna publicación
                         </p>
                       )}{" "}
-                      <Post posts={posts}></Post>
+                      <Posts>
+                        <Post posts={posts}></Post>
+                      </Posts>
                     </div>
                   </>
                 )}

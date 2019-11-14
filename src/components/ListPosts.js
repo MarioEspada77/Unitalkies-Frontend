@@ -7,13 +7,16 @@ import { ReactComponent as Heart } from "../img/heart.svg";
 import styled from "styled-components";
 import "../css/post.css";
 
+
 const HeartWrap = styled.span`
   i {
     color: red;
     font-size: 20px;
   }
 `;
-
+const Posts = styled.div`
+  width: 40%;
+`
 class ListPosts extends Component {
   state = {
     likes: [],
