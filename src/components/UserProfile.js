@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Post from "./Post";
 import Follow from "./Follow";
 import WritePost from "../components/WritePost";
+import NavPrimary from "../components/NavPrimary";
 
 class UserProfile extends Component {
   state = {
@@ -103,6 +104,7 @@ class UserProfile extends Component {
       <div>
         {!error && (
           <>
+            <NavPrimary />
             {!loading && (
               <div>
                 {profile[0].university_name ? (
