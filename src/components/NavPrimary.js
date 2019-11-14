@@ -5,6 +5,7 @@ import "../css/nav.css";
 import "../css/notification.scss";
 import notifificationServices from "../services/notificationService";
 import "../dropdown.js";
+import image from "../img/image_profile.jpg";
 
 class nav extends Component {
   state = {
@@ -34,15 +35,7 @@ class nav extends Component {
           </div>
           <div className="p-2 ">
             <div class="btn-group">
-              <button
-                type="button"
-                class=" dropdown-toggle"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {user.username}
-              </button>
+            <img src={image} alt="dropdown-toggle" className="rounded-circle dropdown-toggle" width="40" data-toggle="dropdown" aria-haspopup="true" ria-expanded="false"/>
               <div class="dropdown-menu">
                 <a class="dropdown-item">
                   <Link to={`/profile/${user.username}`}>Ver perfil</Link>
