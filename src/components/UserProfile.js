@@ -8,6 +8,7 @@ import Follow from "./Follow";
 import WritePost from "../components/WritePost";
 import NavPrimary from "../components/NavPrimary";
 import styled from "styled-components";
+import image from "../img/image_profile.jpg";
 
 
 const Loading = styled.div`
@@ -147,6 +148,7 @@ class UserProfile extends Component {
                 {profile[0].university_name ? (
                   <UserCard>
                     <UserInfo>
+                     <img src={image} alt="avatar" className="rounded-circle" width="100"/>
                       <p>University: {profile[0].university_name}</p>
                       <Follow
                         isFollowing={isFollowing}
@@ -164,6 +166,7 @@ class UserProfile extends Component {
                 ) : (
                   <>
                   <UserCard>
+                    <img src={image} alt="avatar" className="rounded-circle" width="100"/>
                     <p>username: {profile[0].username}</p>
                     {user._id !== profile[0]._id ? (
                       <Follow
