@@ -10,41 +10,43 @@ import NavPrimary from "../components/NavPrimary";
 import styled from "styled-components";
 import image from "../img/image_profile.jpg";
 
-
 const Loading = styled.div`
-    margin-top: 100px;
-    text-align: center;
-`
+  margin-top: 100px;
+  text-align: center;
+`;
 const UserWrapper = styled.div`
-    display:flex;
-    margin-top: 100px;
-`
+  display: flex;
+  margin-top: 100px;
+`;
 const UserCard = styled.div`
-    flex-direction: row;
-    width: 30%;
-    background-color: white;
-    margin-left:20px;
-    margin-right: 20px;
-    padding: 20px;
-    height: 200px;
-    text-align: center;
-`
+  flex-direction: row;
+  width: 30%;
+  background-color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  min-height: 200px;
+  text-align: center;
+`;
 const UserInfo = styled.div`
-    margin-left: 20px;
-`
+  margin-left: 20px;
+`;
 const Posts = styled.div`
-    display-flex: column;
-    width: 800px;
-`
+  display-flex: column;
+  width: 800px;
+`;
 const UserFollows = styled.div`
-    width: 800px;
-    background-color: white;
-    margin-bottom: 40px;
-    padding: 20px;
-`
+  width: 800px;
+  background-color: white;
+  margin-bottom: 40px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 6px solid tomato;
+`;
 const UserSpan = styled.span`
-    margin-right: 10px;
-`
+  margin-right: 10px;
+`;
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -74,7 +76,7 @@ class UserProfile extends Component {
         return true;
       }
     });
-    console.log("FOLLOWING",ifFollwing);
+    console.log("FOLLOWING", ifFollwing);
     this.setState({
       profile: userProfile.userProfile,
       posts: userProfile.posts,
@@ -107,7 +109,7 @@ class UserProfile extends Component {
         return true;
       }
     });
-    console.log(ifFollwing)
+    console.log(ifFollwing);
     try {
       const unfollow = await followServices.deleteFollow(ifFollwing._id);
       const follows = await followServices.getFollowersUser(username);
@@ -148,7 +150,12 @@ class UserProfile extends Component {
                 {profile[0].university_name ? (
                   <UserCard>
                     <UserInfo>
-                     <img src={image} alt="avatar" className="rounded-circle" width="100"/>
+                      <img
+                        src={image}
+                        alt="avatar"
+                        className="rounded-circle"
+                        width="100"
+                      />
                       <p>University: {profile[0].university_name}</p>
                       <Follow
                         isFollowing={isFollowing}
@@ -165,19 +172,24 @@ class UserProfile extends Component {
                   </UserCard>
                 ) : (
                   <>
-                  <UserCard>
-                    <img src={image} alt="avatar" className="rounded-circle" width="100"/>
-                    <p>username: {profile[0].username}</p>
-                    {user._id !== profile[0]._id ? (
-                      <Follow
-                        isFollowing={isFollowing}
-                        getFollows={this.getFollows}
-                        getUnfollow={this.getUnfollow}
-                      ></Follow>
-                    ) : (
-                      <button>Editar perfil</button>
-                    )}
-                  </UserCard>
+                    <UserCard>
+                      <img
+                        src={image}
+                        alt="avatar"
+                        className="rounded-circle"
+                        width="100"
+                      />
+                      <p>username: {profile[0].username}</p>
+                      {user._id !== profile[0]._id ? (
+                        <Follow
+                          isFollowing={isFollowing}
+                          getFollows={this.getFollows}
+                          getUnfollow={this.getUnfollow}
+                        ></Follow>
+                      ) : (
+                        <button>Editar perfil</button>
+                      )}
+                    </UserCard>
                     <div className="user-publications">
                       {posts.length === 0 && (
                         <p>
@@ -185,20 +197,21 @@ class UserProfile extends Component {
                         </p>
                       )}{" "}
                       <UserFollows>
-                          <UserSpan>
-                              Publicaciones {posts.length}
-                          </UserSpan>
-                          <UserSpan>
+                        <UserSpan>Publicaciones {posts.length}</UserSpan>
+                        <UserSpan>
+                          <span>
                             <Link to={`/following/${profile[0].username}`}>
                               Siguiendo {following.length}
                             </Link>
-                          </UserSpan>
-                          <UserSpan>
-                            <Link to={`/followers/${profile[0].username}`}>
-                              Seguidores {follows.length}
-                            </Link>
-                          </UserSpan>
-                        </UserFollows>
+                          </span>
+                        </UserSpan>
+                        <UserSpan>
+                          <Link to={`/followers/${profile[0].username}`}>
+                            Seguidores {follows.length}
+                          </Link>
+                        </UserSpan>
+                        <p>Hola</p>
+                      </UserFollows>
                       <Posts>
                         <Post posts={posts}></Post>
                       </Posts>
@@ -207,11 +220,11 @@ class UserProfile extends Component {
                 )}
               </UserWrapper>
             )}
-            {loading && 
+            {loading && (
               <Loading>
                 <div className="spinner-border loading"></div>
               </Loading>
-            }
+            )}
           </div>
         )}
         <div>{error}</div>
