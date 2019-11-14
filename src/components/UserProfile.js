@@ -14,7 +14,16 @@ const Loading = styled.div`
     margin-top: 100px;
     text-align: center;
 `
-
+const UserWrapper = styled.div`
+    display:flex;
+    margin-top: 100px;
+`
+const UserCard = styled.div`
+    flex-direction: row;
+`
+const UserInfo = styled.div`
+    margin-left: 20px;
+`
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -113,22 +122,24 @@ class UserProfile extends Component {
           <div className="user-profile">
             <NavPrimary />
             {!loading && (
-              <div>
+              <UserWrapper>
                 {profile[0].university_name ? (
-                  <>
-                    <p>University: {profile[0].university_name}</p>
-                    <Follow
-                      isFollowing={isFollowing}
-                      getFollows={this.getFollows}
-                      getUnfollow={this.getUnfollow}
-                    ></Follow>
-                    <p>Seguidores: {follows.length}</p>
-                    <WritePost
-                      user={user}
-                      updatePost={this.updatePost}
-                      university={profile[0]._id}
-                    />
-                  </>
+                  <UserCard>
+                    <UserInfo>
+                      <p>University: {profile[0].university_name}</p>
+                      <Follow
+                        isFollowing={isFollowing}
+                        getFollows={this.getFollows}
+                        getUnfollow={this.getUnfollow}
+                      ></Follow>
+                      <p>Seguidores: {follows.length}</p>
+                      <WritePost
+                        user={user}
+                        updatePost={this.updatePost}
+                        university={profile[0]._id}
+                      />
+                    </UserInfo>
+                  </UserCard>
                 ) : (
                   <>
                     <p>username: {profile[0].username}</p>
@@ -159,7 +170,7 @@ class UserProfile extends Component {
                     </div>
                   </>
                 )}
-              </div>
+              </UserWrapper>
             )}
             {loading && 
               <Loading>
