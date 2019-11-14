@@ -7,6 +7,13 @@ import Post from "./Post";
 import Follow from "./Follow";
 import WritePost from "../components/WritePost";
 import NavPrimary from "../components/NavPrimary";
+import styled from "styled-components";
+
+
+const Loading = styled.div`
+    margin-top: 100px;
+    text-align: center;
+`
 
 class UserProfile extends Component {
   state = {
@@ -103,7 +110,7 @@ class UserProfile extends Component {
     return (
       <div>
         {!error && (
-          <>
+          <div className="user-profile">
             <NavPrimary />
             {!loading && (
               <div>
@@ -154,8 +161,12 @@ class UserProfile extends Component {
                 )}
               </div>
             )}
-            {loading && <div>Cargando perfil del usuario...</div>}
-          </>
+            {loading && 
+              <Loading>
+                <div className="spinner-border loading"></div>
+              </Loading>
+            }
+          </div>
         )}
         <div>{error}</div>
       </div>
