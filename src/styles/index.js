@@ -1,6 +1,15 @@
 export const theme = {
-  colors: {
+  
+  "light":{
+    theme: "light",
     primary: "#FF8360",
-    boxColor: "white"
+    boxColor: "white",
+    color: "black",
+  },
+  "dark":{
+    theme: "dark",
+    primary: "black",
+    boxColor: "black",
+    color: "white",
   }
 };

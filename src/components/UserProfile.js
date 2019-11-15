@@ -42,7 +42,7 @@ const UserFollows = styled.div`
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  border-top: 6px solid ${({ theme }) => theme.colors.primary};
+  border-top: 6px solid ${({ theme }) => theme.primary};
 `;
 const UserSpan = styled.span`
   margin-right: 10px;

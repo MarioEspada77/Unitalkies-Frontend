@@ -15,7 +15,8 @@ const HeartWrap = styled.span`
   }
 `;
 const Posts = styled.div`
-  width: 40%;
+  background-color ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color}
 `
 class ListPosts extends Component {
   state = {
@@ -87,7 +88,8 @@ class ListPosts extends Component {
     const { likes } = this.state;
     const DateToFormat = post.created_at
     return (
-      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded card-color">
+      <Posts>
+      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 rounded">
         <p>
           <i>
               {post.username.username} · <Moment fromNow>{DateToFormat}</Moment>
@@ -103,6 +105,7 @@ class ListPosts extends Component {
         </p>
         {this.ifExistLike()}
       </div>
+      </Posts>
     );
   }
 }

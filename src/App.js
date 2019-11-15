@@ -20,15 +20,29 @@ import NavPrimary from "./components/NavPrimary";
 
 class App extends Component {
   state = {
-    actualTheme: "light"
+    actualTheme: theme["light"]
   };
+
+  handleTheme = () =>{
+    const { actualTheme } = this.state;
+    if(actualTheme.theme === "light"){
+      this.setState({
+        actualTheme: theme["dark"],
+      })
+    }else{
+      this.setState({
+        actualTheme: theme["light"],
+      })
+    }
+  }
   render() {
     const { handleLogout } = this.props;
+    const { actualTheme } = this.state;
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={actualTheme}>
         <div className="background-page">
           <Router>
-            <NavPrimary />
+            <NavPrimary handleTheme={this.handleTheme} actualTheme={actualTheme}/>
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
             <PrivateRoute exact path="/home" component={Home} />

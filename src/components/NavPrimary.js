@@ -17,8 +17,12 @@ class nav extends Component {
       notifications
     });
   }
+  handleChangeTheme = e =>{
+    const { handleTheme, actualTheme} = this.props;
+    handleTheme();
+  }
   render() {
-    const { user, handleLogout } = this.props;
+    const { user, handleLogout, actualTheme} = this.props;
     const { notifications } = this.state;
     return (
       <>
@@ -39,6 +43,9 @@ class nav extends Component {
               <div class="dropdown-menu">
                 <a class="dropdown-item">
                   <Link to={`/profile/${user.username}`}>Ver perfil</Link>
+                </a>
+                <a className="dropdown-item">
+                <a onClick={this.handleChangeTheme}>{actualTheme.theme === "light" ? "Cambiar a modo oscuro" : "Cambiar a modo claro"}</a>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" onClick={handleLogout}>
