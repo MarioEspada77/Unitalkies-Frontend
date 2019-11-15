@@ -13,9 +13,9 @@ const LoginForm = styled.div`
 const InputLogin = styled.input`
   margin-top: 10px;
   display: inline-block;
-  background-color: ${({ theme }) => theme.primary}
+  background-color: ${({ theme }) => theme.secondary}
   text-align: center;
-  border: 1px solid ${({ theme }) => theme.primary}
+  border: 1px solid ${({ theme }) => theme.secondary}
   border-radius: 0.25rem;
   margin-top: 10px;
   padding: 4px;

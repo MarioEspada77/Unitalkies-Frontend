@@ -21,12 +21,15 @@ const UserWrapper = styled.div`
 const UserCard = styled.div`
   flex-direction: row;
   width: 30%;
-  background-color: white;
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color}
   margin-left: 20px;
   margin-right: 20px;
   padding: 20px;
   min-height: 200px;
   text-align: center;
+  height: 240px;
+  border-radius: 4px;
 `;
 const UserInfo = styled.div`
   margin-left: 20px;
@@ -37,12 +40,14 @@ const Posts = styled.div`
 `;
 const UserFollows = styled.div`
   width: 800px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color}
   margin-bottom: 40px;
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  border-top: 6px solid ${({ theme }) => theme.primary};
+  border-top: 6px solid ${({ theme }) => theme.secondary};
+  border-radius: 4px;
 `;
 const UserSpan = styled.span`
   margin-right: 10px;

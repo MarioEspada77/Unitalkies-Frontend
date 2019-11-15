@@ -6,7 +6,7 @@ import styled from "styled-components";
 const ButtonWritePost = styled.button`
   margin-top: 10px;
   display: inline-block;
-  background-color: ${({ theme }) => theme.primary}
+  background-color: ${({ theme }) => theme.secondary}
   text-align: center;
   border: 1px solid ${({ theme }) => theme.primary}
   border-radius: 0.25rem;
