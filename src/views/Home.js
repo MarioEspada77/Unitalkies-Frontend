@@ -74,7 +74,6 @@ class Home extends Component {
     const { user } = this.props;
     return (
       <div className="container-fluid">
-        <NavPrimary />
         <div className="row">
           <div className="col-md-4 ">
             <div className="user-card margin-home">
