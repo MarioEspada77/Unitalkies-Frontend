@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import { Link } from "react-router-dom";
 import "../css/nav.css";
-import "../css/notification.scss";
 import notifificationServices from "../services/notificationService";
 import "../dropdown.js";
 import image from "../img/image_profile.jpg";
