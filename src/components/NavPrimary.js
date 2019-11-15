@@ -17,6 +17,19 @@ const DropDown = styled.div`
   background-color: ${({ theme }) => theme.boxColor};
   color: ${({ theme }) => theme.color}
 `
+const ButtonWritePost = styled.button`
+  display: inline-block;
+  background-color: ${({ theme }) => theme.primary}
+  text-align: center;
+  border: 1px solid ${({ theme }) => theme.primary}
+  border-radius: 0.25rem;
+  width: 80px;
+  text-decoration: none
+  color: ${({ theme }) => theme.primary}
+  &:a{
+    text-decoration: none
+  }
+`;
 
 class nav extends Component {
   state = {
@@ -72,10 +85,14 @@ class nav extends Component {
               : 
               <>
               <div className="p-2">
-                <Link to={`/login`}>Login</Link>
+                <ButtonWritePost>
+                  <a><Link style={{textDecoration: "none"}} to={`/login`}>Login</Link></a>
+                </ButtonWritePost>
               </div>
               <div className="p-2">
-                <Link to={`/login`}>Signup</Link>
+                <ButtonWritePost>
+                  <a><Link style={{textDecoration: "none"}} to={`/signup`}>Signup</Link></a>
+                </ButtonWritePost>
               </div>
               </>
                 }
