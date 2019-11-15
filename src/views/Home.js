@@ -8,6 +8,12 @@ import NavPrimary from "../components/NavPrimary";
 import "../css/home.scss";
 import "../css/post.css";
 import image from "../img/image_profile.jpg";
+import styled from "styled-components";
+
+const BackgroundWritePost = styled.div`
+  background-color: ${({ theme }) => theme.boxColor}
+`
+
 
 class Home extends Component {
   state = {
@@ -60,11 +66,13 @@ class Home extends Component {
       console.log(posts);
       return (
         <>
-          <div className="shadow-sm p-3 mb-5 rounded card-color">
-            <WritePost user={user} updatePost={this.updatePost} />
-          </div>
-          <Post posts={posts}></Post>
-        </>
+            <BackgroundWritePost> 
+                <div className="shadow-sm p-3 mb-5 rounded">
+                  <WritePost user={user} updatePost={this.updatePost} />  
+                </div>
+            </BackgroundWritePost>
+            <Post posts={posts}></Post>
+      </>
       );
     }
   };
