@@ -17,7 +17,6 @@ const HeartWrap = styled.span`
 const Posts = styled.div`
   background-color ${({ theme }) => theme.boxColor};
   color: ${({ theme }) => theme.color}
-  border-radius: 4px;
 `
 class ListPosts extends Component {
   state = {
@@ -90,7 +89,7 @@ class ListPosts extends Component {
     const DateToFormat = post.created_at
     return (
       <Posts>
-      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5">
+      <div key={`post-${post._id}`} className="shadow-sm p-3 mb-5 card-color">
         <p>
           <i>
               {post.username.username} · <Moment fromNow>{DateToFormat}</Moment>

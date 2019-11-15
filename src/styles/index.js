@@ -6,6 +6,7 @@ export const theme = {
     secondary: "#FF8360",
     boxColor: "white",
     color: "black",
+    borderColor: "#d9d9d9"
   },
   "dark":{
     theme: "dark",
@@ -13,5 +14,6 @@ export const theme = {
     secondary: "#ffa420",
     boxColor: "#333",
     color: "white",
+    borderColor: "#d9d9d9"
   }
 };

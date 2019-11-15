@@ -23,6 +23,7 @@ const UserCard = styled.div`
   width: 30%;
   background-color: ${({ theme }) => theme.boxColor};
   color: ${({ theme }) => theme.color}
+  border: 1px solid ${({ theme }) => theme.borderColor};
   margin-left: 20px;
   margin-right: 20px;
   padding: 20px;
@@ -48,6 +49,9 @@ const UserFollows = styled.div`
   justify-content: space-between;
   border-top: 6px solid ${({ theme }) => theme.secondary};
   border-radius: 4px;
+  border-bottom: 1px solid ${({ theme }) => theme.borderColor};
+  border-left: 1px solid ${({ theme }) => theme.borderColor};
+  border-right: 1px solid ${({ theme }) => theme.borderColor};
 `;
 const UserSpan = styled.span`
   margin-right: 10px;
