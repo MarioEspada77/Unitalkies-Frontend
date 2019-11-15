@@ -30,6 +30,28 @@ const ButtonWritePost = styled.button`
     text-decoration: none
   }
 `;
+const NotificationBell = styled.i`
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.secondary};
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+  margin-top: 12px;
+  margin-right: 10px;
+  &:hover {
+    color: tomato;
+  }
+`
+const NotificationSpan = styled.span`
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: -2px;
+  border-radius: 50%;
+  background: red;
+  color: ${({ theme }) => theme.color};
+`
 
 class nav extends Component {
   state = {
@@ -57,11 +79,11 @@ class nav extends Component {
             <>
               <div className="p-2 ">
                   <Link to={`/notifications/all`}>
-                      <i className="fa fa-bell notification">
+                      <NotificationBell className="fa fa-bell">
                           {notifications.length > 0 && (
-                            <span className="badge">{notifications.length}</span>
+                            <NotificationSpan>{notifications.length}</NotificationSpan>
                           )}
-                      </i>
+                      </NotificationBell>
                   </Link>
                 </div>
                 <div className="p-2 ">
