@@ -6,6 +6,17 @@ import "../css/notification.scss";
 import notifificationServices from "../services/notificationService";
 import "../dropdown.js";
 import image from "../img/image_profile.jpg";
+import styled from "styled-components";
+
+const NavColor = styled.div`
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color}
+  border-bottom: 2px solid #d9d9d9;
+`
+const DropDown = styled.div`
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color}
+`
 
 class nav extends Component {
   state = {
@@ -26,7 +37,7 @@ class nav extends Component {
     const { notifications } = this.state;
     return (
       <>
-        <div className="fixed-top primary-color padding-nav d-flex">
+      <NavColor className="fixed-top padding-nav d-flex">
           <div className="p-2 mr-auto ">Unitalkies</div>
           <div className="p-2 ">
             <Link to={`/notifications/all`}>
@@ -40,7 +51,7 @@ class nav extends Component {
           <div className="p-2 ">
             <div class="btn-group">
             <img src={image} alt="dropdown-toggle" className="rounded-circle dropdown-toggle" width="40" data-toggle="dropdown" aria-haspopup="true" ria-expanded="false"/>
-              <div class="dropdown-menu">
+              <DropDown className="dropdown-menu">
                 <a class="dropdown-item">
                   <Link to={`/profile/${user.username}`}>Ver perfil</Link>
                 </a>
@@ -51,10 +62,10 @@ class nav extends Component {
                 <a class="dropdown-item" onClick={handleLogout}>
                   Cerrar sesión
                 </a>
-              </div>
+            </DropDown>
             </div>
           </div>
-        </div>
+        </NavColor>
       </>
     );
   }
