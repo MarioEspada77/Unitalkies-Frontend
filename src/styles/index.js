@@ -8,8 +8,8 @@ export const theme = {
   },
   "dark":{
     theme: "dark",
-    primary: "black",
-    boxColor: "black",
+    primary: "#333",
+    boxColor: "#333",
     color: "white",
   }
 };
