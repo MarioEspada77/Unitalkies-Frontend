@@ -17,6 +17,7 @@ import { ThemeProvider } from "styled-components";
 import { theme, GlobalStyle } from "./styles";
 import NavPrimary from "./components/NavPrimary";
 import NoPage from "./components/NoPage";
+import PostDetail from "./components/PostDetail";
 
 class App extends Component {
   state = {
@@ -79,6 +80,11 @@ class App extends Component {
                 exact
                 path="/following/:username"
                 component={UserFollowing}
+              />
+              <PrivateRoute
+                exact
+                path="/detail/:postId"
+                component={PostDetail}
               />
               <PrivateRoute
                 exact

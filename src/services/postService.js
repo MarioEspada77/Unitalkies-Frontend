@@ -26,6 +26,9 @@ class postService {
       .get(`/post/${postId}/${username}/unlike`)
       .then(({ data }) => data);
   }
+  postDetail(postId) {
+    return this.post.get(`/post/detail/${postId}`).then(({ data }) => data);
+  }
 }
 
 const postServices = new postService();

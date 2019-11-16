@@ -43,7 +43,7 @@ const Posts = styled.div`
 const UserFollows = styled.div`
   width: 800px;
   background-color: ${({ theme }) => theme.boxColor};
-  color: ${({ theme }) => theme.color}
+  color: ${({ theme }) => theme.color};
   margin-bottom: 40px;
   padding: 20px;
   display: flex;
@@ -60,9 +60,9 @@ const UserSpan = styled.span`
 
 const ButtonEditProfile = styled.button`
   display: inline-block;
-  background-color: ${({ theme }) => theme.secondary}
+  background-color: ${({ theme }) => theme.secondary};
   text-align: center;
-  border: 1px solid ${({ theme }) => theme.primary}
+  border: 1px solid ${({ theme }) => theme.primary};
   border-radius: 0.25rem;
   padding: 4px;
   width: 120px;
