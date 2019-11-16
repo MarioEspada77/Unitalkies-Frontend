@@ -19,6 +19,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.boxColor};
   border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.borderColor};
+  color: ${({ theme }) => theme.color};
 `;
 const UserCard = styled.div`
   color: black;
