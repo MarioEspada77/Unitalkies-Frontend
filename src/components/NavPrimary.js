@@ -18,14 +18,14 @@ const DropDown = styled.div`
 `;
 const ButtonWritePost = styled.button`
   display: inline-block;
-  background-color: ${({ theme }) => theme.primary}
+  background-color: ${({ theme }) => theme.primary};
   text-align: center;
-  border: 1px solid ${({ theme }) => theme.primary}
+  border: 1px solid ${({ theme }) => theme.primary};
   border-radius: 0.25rem;
   width: 80px;
-  text-decoration: none
-  color: ${({ theme }) => theme.primary}
-  &:a{
+  text-decoration: none;
+  color: ${({ theme }) => theme.primary};
+  &:a {
     text-decoration: none;
   }
 `;
