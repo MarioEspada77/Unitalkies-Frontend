@@ -20,6 +20,9 @@ const Container = styled.div`
   border-radius: 3px;
   border: 1px solid ${({ theme }) => theme.borderColor};
 `;
+const UserCard = styled.div`
+  color: black;
+`;
 
 class Home extends Component {
   state = {
@@ -90,7 +93,7 @@ class Home extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-4 ">
-            <div className="user-card margin-home">
+            <UserCard className="margin-home">
               <Container>
                 <div className="information">
                   <img
@@ -120,7 +123,7 @@ class Home extends Component {
                   </div>
                 </div>
               </Container>
-            </div>
+            </UserCard>
           </div>
           <div className="col-md-6 margin-home">
             {loading && (
