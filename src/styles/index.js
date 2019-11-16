@@ -25,6 +25,9 @@ export const GlobalStyle = createGlobalStyle`
   html {
     body {
       background-color: ${({ theme }) => theme.body} ;
+      a {
+        color: ${({ theme }) => theme.color}
+      }
     }
   }
 `;

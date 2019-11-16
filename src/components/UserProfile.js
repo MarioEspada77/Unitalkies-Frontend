@@ -66,6 +66,12 @@ const ButtonEditProfile = styled.button`
   padding: 4px;
   width: 120px;
 `;
+const SpanUserInfo = styled.span`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #8c98a8;
+`;
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -216,18 +222,21 @@ class UserProfile extends Component {
                         </p>
                       )}{" "}
                       <UserFollows>
-                        <UserSpan>Publicaciones {posts.length}</UserSpan>
                         <UserSpan>
-                          <span>
-                            <Link to={`/following/${profile[0].username}`}>
-                              Siguiendo {following.length}
-                            </Link>
-                          </span>
+                          Publicaciones{" "}
+                          <SpanUserInfo>{posts.length}</SpanUserInfo>
+                        </UserSpan>
+                        <UserSpan>
+                          <Link to={`/following/${profile[0].username}`}>
+                            Siguiendo
+                          </Link>
+                          <SpanUserInfo>{following.length}</SpanUserInfo>
                         </UserSpan>
                         <UserSpan>
                           <Link to={`/followers/${profile[0].username}`}>
-                            Seguidores {follows.length}
+                            Seguidores
                           </Link>
+                          <SpanUserInfo>{follows.length}</SpanUserInfo>
                         </UserSpan>
                         <p>Hola</p>
                       </UserFollows>
