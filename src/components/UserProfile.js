@@ -9,6 +9,7 @@ import WritePost from "../components/WritePost";
 import NavPrimary from "../components/NavPrimary";
 import styled from "styled-components";
 import image from "../img/image_profile.jpg";
+import { anyTypeAnnotation } from "@babel/types";
 
 const Loading = styled.div`
   margin-top: 100px;
@@ -238,7 +239,10 @@ class UserProfile extends Component {
                           </Link>
                           <SpanUserInfo>{follows.length}</SpanUserInfo>
                         </UserSpan>
-                        <p>Hola</p>
+                        <UserSpan>
+                          Likes
+                          <SpanUserInfo>0</SpanUserInfo>
+                        </UserSpan>
                       </UserFollows>
                       <Posts>
                         <Post posts={posts}></Post>
