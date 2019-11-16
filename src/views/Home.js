@@ -11,9 +11,15 @@ import image from "../img/image_profile.jpg";
 import styled from "styled-components";
 
 const BackgroundWritePost = styled.div`
-  background-color: ${({ theme }) => theme.boxColor}
-`
-
+  background-color: ${({ theme }) => theme.boxColor};
+`;
+const Container = styled.div`
+  margin-top: 40px;
+  width: 100%;
+  background: ${({ theme }) => theme.boxColor};
+  border-radius: 3px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+`;
 
 class Home extends Component {
   state = {
@@ -66,13 +72,13 @@ class Home extends Component {
       console.log(posts);
       return (
         <>
-            <BackgroundWritePost> 
-                <div className="shadow-sm p-3 mb-5 rounded">
-                  <WritePost user={user} updatePost={this.updatePost} />  
-                </div>
-            </BackgroundWritePost>
-            <Post posts={posts}></Post>
-      </>
+          <BackgroundWritePost>
+            <div className="shadow-sm p-3 mb-5 rounded">
+              <WritePost user={user} updatePost={this.updatePost} />
+            </div>
+          </BackgroundWritePost>
+          <Post posts={posts}></Post>
+        </>
       );
     }
   };
@@ -85,7 +91,7 @@ class Home extends Component {
         <div className="row">
           <div className="col-md-4 ">
             <div className="user-card margin-home">
-              <div className="container">
+              <Container>
                 <div className="information">
                   <img
                     src={image}
@@ -113,7 +119,7 @@ class Home extends Component {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Container>
             </div>
           </div>
           <div className="col-md-6 margin-home">

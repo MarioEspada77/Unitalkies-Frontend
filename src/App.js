@@ -17,6 +17,7 @@ import Notifications from "./components/Notifications";
 import { ThemeProvider } from "styled-components";
 import { theme, GlobalStyle } from "./styles";
 import NavPrimary from "./components/NavPrimary";
+import NoPage from "./components/NoPage";
 
 class App extends Component {
   state = {
@@ -43,6 +44,7 @@ class App extends Component {
         <GlobalStyle />
         <div className="background-page">
           <Router>
+            <PrivateRoute component={NoPage} />
             <NavPrimary
               handleTheme={this.handleTheme}
               actualTheme={actualTheme}
