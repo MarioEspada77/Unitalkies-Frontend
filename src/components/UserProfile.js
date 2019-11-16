@@ -166,6 +166,7 @@ class UserProfile extends Component {
       isFollowing
     } = this.state;
     const { user } = this.props;
+    console.log(profile);
     return (
       <div>
         {!error && (
@@ -204,7 +205,7 @@ class UserProfile extends Component {
                         className="rounded-circle"
                         width="100"
                       />
-                      <div className="name">@{user.username}</div>
+                      <div className="name">@{profile[0].username}</div>
                       <div className="position">Universidad</div>
                       {user._id !== profile[0]._id ? (
                         <Follow
