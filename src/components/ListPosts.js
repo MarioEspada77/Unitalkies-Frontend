@@ -101,12 +101,12 @@ class ListPosts extends Component {
               </i>
             </p>
             <p>{post.text}</p>
-            <div className="blockquote-footer">
-              <p>
-                <Moment parse="YYYY-MM-DD">{DateToFormat}</Moment>
-              </p>
-            </div>
           </Link>
+          <div className="blockquote-footer">
+            <p>
+              <Moment parse="YYYY-MM-DD">{DateToFormat}</Moment>
+            </p>
+          </div>
           <p>
             Likes:<b>{likes.length}</b>
           </p>
