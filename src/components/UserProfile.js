@@ -23,7 +23,7 @@ const UserCard = styled.div`
   flex-direction: row;
   width: 30%;
   background-color: ${({ theme }) => theme.boxColor};
-  color: ${({ theme }) => theme.color}
+  color: ${({ theme }) => theme.color};
   border: 1px solid ${({ theme }) => theme.borderColor};
   margin-left: 20px;
   margin-right: 20px;

@@ -28,6 +28,9 @@ export const GlobalStyle = createGlobalStyle`
       a {
         color: ${({ theme }) => theme.color}
       }
+      a:hover{
+        text-decoration: none;
+      }
     }
   }
 `;
