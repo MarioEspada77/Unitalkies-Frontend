@@ -15,7 +15,7 @@ import UserFollowers from "./components/UserFollowers";
 import UserFollowing from "./components/UserFollowing";
 import Notifications from "./components/Notifications";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styles";
+import { theme, GlobalStyle } from "./styles";
 import NavPrimary from "./components/NavPrimary";
 
 class App extends Component {
@@ -23,26 +23,30 @@ class App extends Component {
     actualTheme: theme["light"]
   };
 
-  handleTheme = () =>{
+  handleTheme = () => {
     const { actualTheme } = this.state;
-    if(actualTheme.theme === "light"){
+    if (actualTheme.theme === "light") {
       this.setState({
-        actualTheme: theme["dark"],
-      })
-    }else{
+        actualTheme: theme["dark"]
+      });
+    } else {
       this.setState({
-        actualTheme: theme["light"],
-      })
+        actualTheme: theme["light"]
+      });
     }
-  }
+  };
   render() {
     const { handleLogout } = this.props;
     const { actualTheme } = this.state;
     return (
       <ThemeProvider theme={actualTheme}>
+        <GlobalStyle />
         <div className="background-page">
           <Router>
-            <NavPrimary handleTheme={this.handleTheme} actualTheme={actualTheme}/>
+            <NavPrimary
+              handleTheme={this.handleTheme}
+              actualTheme={actualTheme}
+            />
             <AnonRoute exact path="/login" component={Login} />
             <AnonRoute exact path="/signup" component={Signup} />
             <PrivateRoute exact path="/home" component={Home} />
