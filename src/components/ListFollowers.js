@@ -91,23 +91,23 @@ class ListFollowers extends Component {
     console.log("USERNAME", username);
 
     return (
-      <Link to={`/profile/${username.follower.username}`}>
-        <UserCard>
+      <UserCard>
+        <Link to={`/profile/${username.follower.username}`}>
           <Center>
             <p>{username.follower.username}</p>
           </Center>
           <p>
             sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
           </p>
-          <Center>
-            <Follow
-              isFollowing={isFollowing}
-              getUnfollow={this.getUnfollow}
-              getFollows={this.getFollows}
-            ></Follow>
-          </Center>
-        </UserCard>
-      </Link>
+        </Link>
+        <Center>
+          <Follow
+            isFollowing={isFollowing}
+            getUnfollow={this.getUnfollow}
+            getFollows={this.getFollows}
+          ></Follow>
+        </Center>
+      </UserCard>
     );
   }
 }
