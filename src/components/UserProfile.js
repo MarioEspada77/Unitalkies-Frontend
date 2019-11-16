@@ -187,7 +187,8 @@ class UserProfile extends Component {
                         className="rounded-circle"
                         width="100"
                       />
-                      <p>username: {profile[0].username}</p>
+                      <div className="name">@{user.username}</div>
+                      <div className="position">Universidad</div>
                       {user._id !== profile[0]._id ? (
                         <Follow
                           isFollowing={isFollowing}
