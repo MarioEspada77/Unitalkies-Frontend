@@ -11,11 +11,11 @@ const NavColor = styled.div`
   background-color: ${({ theme }) => theme.boxColor};
   color: ${({ theme }) => theme.color}
   border-bottom: 2px solid #d9d9d9;
-`
+`;
 const DropDown = styled.div`
   background-color: ${({ theme }) => theme.boxColor};
-  color: ${({ theme }) => theme.color}
-`
+  color: ${({ theme }) => theme.color};
+`;
 const ButtonWritePost = styled.button`
   display: inline-block;
   background-color: ${({ theme }) => theme.primary}
@@ -26,7 +26,7 @@ const ButtonWritePost = styled.button`
   text-decoration: none
   color: ${({ theme }) => theme.primary}
   &:a{
-    text-decoration: none
+    text-decoration: none;
   }
 `;
 const NotificationBell = styled.i`
@@ -41,7 +41,7 @@ const NotificationBell = styled.i`
   &:hover {
     color: tomato;
   }
-`
+`;
 const NotificationSpan = styled.span`
   position: absolute;
   top: -10px;
@@ -50,7 +50,7 @@ const NotificationSpan = styled.span`
   border-radius: 50%;
   background: red;
   color: ${({ theme }) => theme.color};
-`
+`;
 
 class nav extends Component {
   state = {
@@ -62,62 +62,84 @@ class nav extends Component {
       notifications
     });
   }
-  handleChangeTheme = e =>{
-    const { handleTheme, actualTheme} = this.props;
+  handleChangeTheme = e => {
+    const { handleTheme, actualTheme } = this.props;
     handleTheme();
-  }
+  };
   render() {
-    const { user, handleLogout, actualTheme} = this.props;
+    const { user, handleLogout, actualTheme } = this.props;
     const { notifications } = this.state;
     return (
       <>
-      <NavColor className="fixed-top padding-nav d-flex">
+        <NavColor className="fixed-top padding-nav d-flex">
           <div className="p-2 mr-auto ">Unitalkies</div>
-            <>
-            {user ?
-            <>
-              <div className="p-2 ">
+          <>
+            {user ? (
+              <>
+                <div className="p-2 ">
                   <Link to={`/notifications/all`}>
-                      <NotificationBell className="fa fa-bell">
-                          {notifications.length > 0 && (
-                            <NotificationSpan>{notifications.length}</NotificationSpan>
-                          )}
-                      </NotificationBell>
+                    <NotificationBell className="fa fa-bell">
+                      {notifications.length > 0 && (
+                        <NotificationSpan>
+                          {notifications.length}
+                        </NotificationSpan>
+                      )}
+                    </NotificationBell>
                   </Link>
                 </div>
                 <div className="p-2 ">
-                    <div class="btn-group">
-                        <img src={image} alt="dropdown-toggle" className="rounded-circle dropdown-toggle" width="40" data-toggle="dropdown" aria-haspopup="true" ria-expanded="false"/>
-                            <DropDown className="dropdown-menu">
-                                  <a class="dropdown-item">
-                                    <Link to={`/profile/${user.username}`}>Ver perfil</Link>
-                                  </a>
-                                  <a className="dropdown-item">
-                                    <a onClick={this.handleChangeTheme}>{actualTheme.theme === "light" ? "Cambiar a modo oscuro" : "Cambiar a modo claro"}</a>
-                                  </a>
-                                 <div class="dropdown-divider"></div>
-                                 <a class="dropdown-item" onClick={handleLogout}>
-                                    Cerrar sesión
-                                  </a>
-                            </DropDown>
-                     </div>
-                 </div> 
-                </>
-              : 
-              <>
-              <div className="p-2">
-                <ButtonWritePost>
-                  <a><Link style={{textDecoration: "none"}} to={`/login`}>Login</Link></a>
-                </ButtonWritePost>
-              </div>
-              <div className="p-2">
-                <ButtonWritePost>
-                  <a><Link style={{textDecoration: "none"}} to={`/signup`}>Signup</Link></a>
-                </ButtonWritePost>
-              </div>
+                  <div class="btn-group">
+                    <img
+                      src={image}
+                      alt="dropdown-toggle"
+                      className="rounded-circle dropdown-toggle"
+                      width="40"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      ria-expanded="false"
+                    />
+                    <DropDown className="dropdown-menu">
+                      <a class="dropdown-item">
+                        <Link to={`/profile/${user.username}`}>Ver perfil</Link>
+                      </a>
+                      <a className="dropdown-item">
+                        <a onClick={this.handleChangeTheme}>
+                          {actualTheme.theme === "light"
+                            ? "Cambiar a modo oscuro"
+                            : "Cambiar a modo claro"}
+                        </a>
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" onClick={handleLogout}>
+                        Cerrar sesión
+                      </a>
+                    </DropDown>
+                  </div>
+                </div>
               </>
-                }
-        </>
+            ) : (
+              <>
+                <div className="p-2">
+                  <ButtonWritePost>
+                    <a>
+                      <Link style={{ textDecoration: "none" }} to={`/login`}>
+                        Login
+                      </Link>
+                    </a>
+                  </ButtonWritePost>
+                </div>
+                <div className="p-2">
+                  <ButtonWritePost>
+                    <a>
+                      <Link style={{ textDecoration: "none" }} to={`/signup`}>
+                        Signup
+                      </Link>
+                    </a>
+                  </ButtonWritePost>
+                </div>
+              </>
+            )}
+          </>
         </NavColor>
       </>
     );

@@ -73,6 +73,17 @@ const SpanUserInfo = styled.span`
   text-align: center;
   color: #8c98a8;
 `;
+const NoPosts = styled.div`
+  width: 800px;
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color};
+  margin-bottom: 40px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+`;
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -218,14 +229,9 @@ class UserProfile extends Component {
                       )}
                     </UserCard>
                     <div className="user-publications">
-                      {posts.length === 0 && (
-                        <p>
-                          Este usuario todavía no ha escrito ninguna publicación
-                        </p>
-                      )}{" "}
                       <UserFollows>
                         <UserSpan>
-                          Publicaciones{" "}
+                          Publicaciones
                           <SpanUserInfo>{posts.length}</SpanUserInfo>
                         </UserSpan>
                         <UserSpan>
@@ -245,6 +251,11 @@ class UserProfile extends Component {
                           <SpanUserInfo>0</SpanUserInfo>
                         </UserSpan>
                       </UserFollows>
+                      {posts.length === 0 && (
+                        <NoPosts>
+                          Este usuario todavía no ha escrito ninguna publicación
+                        </NoPosts>
+                      )}
                       <Posts>
                         <Post posts={posts}></Post>
                       </Posts>
