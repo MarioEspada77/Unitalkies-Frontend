@@ -29,7 +29,7 @@ const UserCard = styled.div`
   padding: 20px;
   min-height: 200px;
   text-align: center;
-  height: 240px;
+  height: 280px;
   border-radius: 4px;
 `;
 const UserInfo = styled.div`
@@ -55,6 +55,16 @@ const UserFollows = styled.div`
 `;
 const UserSpan = styled.span`
   margin-right: 10px;
+`;
+
+const ButtonEditProfile = styled.button`
+  display: inline-block;
+  background-color: ${({ theme }) => theme.secondary}
+  text-align: center;
+  border: 1px solid ${({ theme }) => theme.primary}
+  border-radius: 0.25rem;
+  padding: 4px;
+  width: 120px;
 `;
 class UserProfile extends Component {
   state = {
@@ -196,7 +206,7 @@ class UserProfile extends Component {
                           getUnfollow={this.getUnfollow}
                         ></Follow>
                       ) : (
-                        <button>Editar perfil</button>
+                        <ButtonEditProfile>Editar perfil</ButtonEditProfile>
                       )}
                     </UserCard>
                     <div className="user-publications">
