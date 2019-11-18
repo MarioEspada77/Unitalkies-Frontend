@@ -27,10 +27,9 @@ class WritePost extends Component {
   };
   addPost = e => {
     e.preventDefault();
-    const { user, updatePost, university, post } = this.props;
+    const { user, updatePost, university, post_id } = this.props;
     const { text, caracters } = this.state;
     const username = user.username;
-    const post_id = post._id;
     postServices
       .createPost(username, text, university, post_id )
       .then(post => {

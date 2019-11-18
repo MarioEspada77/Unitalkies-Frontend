@@ -107,6 +107,7 @@ class PostDetail extends Component {
     const { post, likes, comments } = this.state;
     const { user } = this.props;
     const DateToFormat = post.created_at;
+    const post_id = post._id;
     return (
       <PostWrapper>
         <Posts>
@@ -143,7 +144,7 @@ class PostDetail extends Component {
                 </p>
                 {this.ifExistLike()}
               </Link>
-              <WritePost post={post} user={user} updatePost={this.updatePost} ></WritePost>
+              <WritePost post_id={post_id} user={user} updatePost={this.updatePost} ></WritePost>
             </div>
           )}
         </Posts>
