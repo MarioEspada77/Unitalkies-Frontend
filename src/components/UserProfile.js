@@ -201,13 +201,12 @@ class UserProfile extends Component {
                         className="rounded-circle"
                         width="100"
                       />
-                      <p>University: {profile[0].university_name}</p>
+                      <p>{profile[0].university_name}</p>
                       <Follow
                         isFollowing={isFollowing}
                         getFollows={this.getFollows}
                         getUnfollow={this.getUnfollow}
                       ></Follow>
-                      <p>Seguidores: {follows.length}</p>
                     </UserInfo>
                   </UserCard>
                   <div className="user-publications">
