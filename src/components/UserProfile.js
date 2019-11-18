@@ -88,6 +88,9 @@ const Description = styled.p`
     color: ${({ theme }) => theme.color};
     margin-top: 5px;
 `
+const BackgroundWritePost = styled.div`
+  background-color: ${({ theme }) => theme.boxColor};
+`;
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -205,11 +208,6 @@ class UserProfile extends Component {
                         getUnfollow={this.getUnfollow}
                       ></Follow>
                       <p>Seguidores: {follows.length}</p>
-                      <WritePost
-                        user={user}
-                        updatePost={this.updatePost}
-                        university={profile[0]._id}
-                      />
                     </UserInfo>
                   </UserCard>
                   <div className="user-publications">
@@ -235,6 +233,15 @@ class UserProfile extends Component {
                           <SpanUserInfo>0</SpanUserInfo>
                         </UserSpan>
                       </UserFollows>
+                      <BackgroundWritePost>
+                      <div className="shadow-sm p-3 mb-5 rounded card-color">
+                        <WritePost
+                              user={user}
+                              updatePost={this.updatePost}
+                              university={profile[0]._id}
+                          />
+                       </div>
+                       </BackgroundWritePost>
                       {posts.length === 0 && (
                         <NoPosts>
                           Este usuario todavía no ha escrito ninguna publicación
