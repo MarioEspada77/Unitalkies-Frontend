@@ -4,6 +4,7 @@ import Moment from "react-moment";
 import "moment-timezone";
 import postServices from "../services/postService";
 import { withAuth } from "../Context/AuthContext";
+import { Link } from "react-router-dom";
 
 const HeartWrap = styled.span`
   i {
@@ -97,6 +98,11 @@ class PostComment extends Component {
                     {comment.formUni && (
                       <span>
                         en la universidad {comment.formUni.university_name}
+                      </span>
+                    )}
+                    {comment.commented_to && (
+                      <span>
+                          <Link to={`/detail/${comment.commented_to}`}> comentado en la publicación de {comment.username.username}</Link>
                       </span>
                     )}
                   </i>

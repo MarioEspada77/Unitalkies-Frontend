@@ -98,6 +98,11 @@ class ListPosts extends Component {
                 {post.formUni && (
                   <span> en la universidad {post.formUni.university_name}</span>
                 )}
+                {post.commented_to && (
+                    <span>
+                        <Link to={`/detail/${post.commented_to}`}> comentado en la publicación de {post.username.username}</Link>
+                    </span>
+                    )}
               </i>
             </p>
             <p>{post.text}</p>
