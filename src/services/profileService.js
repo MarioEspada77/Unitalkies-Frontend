@@ -12,6 +12,10 @@ class profileService  {
         return this.profile.get(`/profile/${username}`)
         .then(({ data }) => data);
     }
+    updateProfile(username, university, description){
+      return this.profile.put(`/profile/edit/${username}`, {university, description })
+      .then(({ data }) => data);
+  }
 }
 
 const profileServices = new profileService();

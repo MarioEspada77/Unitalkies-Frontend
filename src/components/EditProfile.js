@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 import { withAuth } from "../Context/AuthContext";
+import profileServices from "../services/profileService";
 
 const EditWrapper = styled.div`
     width: 40%;
@@ -33,32 +34,44 @@ const ButtonForm = styled.input`
     width: 140px;
     margin-left: 10px;
 `
+const UpdatedOk = styled.p`
+    color: green;
+`
 
 class EditProfile extends Component {
     state = {
         university: "",
         description: "", 
+        message: ""
     }
     handleChange = (event) => {  
         const {name, value} = event.target;
         this.setState({[name]: value});
       }
     
-      handleFormSubmit = (e) => {
+      handleFormSubmit = async e => {
         e.preventDefault();
         const { university, description } = this.state;
+        const { username } = this.props.match.params;
         if(university === "" || description === ""){
           alert("Los campos no pueden estar vacíos");
         }else{
+            const updatedProfile = await profileServices.updateProfile(username, university, description)
+            if( updatedProfile){
+                this.setState({
+                    message: "Datos actualizados",
+                })
+            }
         }
       }
       
     render() {
-        const { university, description } = this.state;
+        const { university, description, message } = this.state;
         const { username } = this.props.match.params;
         const { user } = this.props;
         return (
             <EditWrapper>
+                    <UpdatedOk>{message}</UpdatedOk>
                     {username === user.username ? (
                         <form onSubmit={this.handleFormSubmit}>
                             <LabelForm>Universidad</LabelForm>
