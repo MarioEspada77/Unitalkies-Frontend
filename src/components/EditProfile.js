@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
+import { withAuth } from "../Context/AuthContext";
 
 const EditWrapper = styled.div`
     width: 40%;
@@ -54,18 +55,22 @@ class EditProfile extends Component {
       
     render() {
         const { university, description } = this.state;
+        const { username } = this.props.match.params;
+        const { user } = this.props;
         return (
             <EditWrapper>
-                    <form onSubmit={this.handleFormSubmit}>
-                        <LabelForm>Universidad</LabelForm>
-                        <InputForm type="text" placeholder="Universidad" name="university" value={university} onChange={this.handleChange}></InputForm>
-                        <LabelForm>Descripción</LabelForm>
-                        <InputForm type="text" placeholder="Descripción" name="description" value={description} onChange={this.handleChange}></InputForm>
-                        <ButtonForm type="submit" value="Actualizar Datos"/>
-                    </form>
+                    {username === user.username ? (
+                        <form onSubmit={this.handleFormSubmit}>
+                            <LabelForm>Universidad</LabelForm>
+                            <InputForm type="text" placeholder="Universidad" name="university" value={university} onChange={this.handleChange}></InputForm>
+                            <LabelForm>Descripción</LabelForm>
+                            <InputForm type="text" placeholder="Descripción" name="description" value={description} onChange={this.handleChange}></InputForm>
+                            <ButtonForm type="submit" value="Actualizar Datos"/>
+                        </form>
+                    ): <div>No puedes editar el perfil de otro usuario</div>}
             </EditWrapper>
         );
     }
 }
 
-export default EditProfile;
+export default withAuth(EditProfile);
