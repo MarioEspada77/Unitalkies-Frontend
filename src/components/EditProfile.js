@@ -38,15 +38,30 @@ class EditProfile extends Component {
         university: "",
         description: "", 
     }
+    handleChange = (event) => {  
+        const {name, value} = event.target;
+        this.setState({[name]: value});
+      }
+    
+      handleFormSubmit = (e) => {
+        e.preventDefault();
+        const { university, description } = this.state;
+        if(university === "" || description === ""){
+          alert("Los campos no pueden estar vacíos");
+        }else{
+        }
+      }
+      
     render() {
+        const { university, description } = this.state;
         return (
             <EditWrapper>
-                    <form>
+                    <form onSubmit={this.handleFormSubmit}>
                         <LabelForm>Universidad</LabelForm>
-                        <InputForm placeholder="Universidad"></InputForm>
+                        <InputForm type="text" placeholder="Universidad" name="university" value={university} onChange={this.handleChange}></InputForm>
                         <LabelForm>Descripción</LabelForm>
-                        <InputForm placeholder="Descripción"></InputForm>
-                        <ButtonForm value="Actualizar Datos"/>
+                        <InputForm type="text" placeholder="Descripción" name="description" value={description} onChange={this.handleChange}></InputForm>
+                        <ButtonForm type="submit" value="Actualizar Datos"/>
                     </form>
             </EditWrapper>
         );
