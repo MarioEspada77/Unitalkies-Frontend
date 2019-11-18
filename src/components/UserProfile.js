@@ -225,7 +225,7 @@ class UserProfile extends Component {
                           getUnfollow={this.getUnfollow}
                         ></Follow>
                       ) : (
-                        <ButtonEditProfile>Editar perfil</ButtonEditProfile>
+                        <ButtonEditProfile><Link to={`/edit/${profile[0].username}`}>Editar perfil</Link></ButtonEditProfile>
                       )}
                     </UserCard>
                     <div className="user-publications">

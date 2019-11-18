@@ -34,8 +34,8 @@ class PostDetail extends Component {
   async componentDidMount() {
     const { postId } = this.props.match.params;
     const posts = await postServices.postDetail(postId).catch(error => {
-      console.log(error);
     });
+    console.log(posts);
     this.setState({
       post: posts,
       likes: posts.likes

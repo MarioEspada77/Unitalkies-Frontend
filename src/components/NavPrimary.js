@@ -24,7 +24,7 @@ const ButtonWritePost = styled.button`
   border-radius: 0.25rem;
   width: 80px;
   text-decoration: none;
-  color: ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.secondary};
   &:a {
     text-decoration: none;
   }
@@ -122,7 +122,7 @@ class nav extends Component {
                 <div className="p-2">
                   <ButtonWritePost>
                     <a>
-                      <Link style={{ textDecoration: "none" }} to={`/login`}>
+                      <Link to={`/login`}>
                         Login
                       </Link>
                     </a>
@@ -131,7 +131,7 @@ class nav extends Component {
                 <div className="p-2">
                   <ButtonWritePost>
                     <a>
-                      <Link style={{ textDecoration: "none" }} to={`/signup`}>
+                      <Link to={`/signup`}>
                         Signup
                       </Link>
                     </a>

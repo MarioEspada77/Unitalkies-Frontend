@@ -18,6 +18,7 @@ import { theme, GlobalStyle } from "./styles";
 import NavPrimary from "./components/NavPrimary";
 import NoPage from "./components/NoPage";
 import PostDetail from "./components/PostDetail";
+import EditProfile from "./components/EditProfile";
 
 class App extends Component {
   state = {
@@ -70,6 +71,11 @@ class App extends Component {
                 exact
                 path="/profile/:username"
                 component={UserProfileView}
+              />
+                <PrivateRoute
+                exact
+                path="/edit/:username"
+                component={EditProfile}
               />
               <PrivateRoute
                 exact
