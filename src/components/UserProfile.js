@@ -181,7 +181,7 @@ class UserProfile extends Component {
       isFollowing
     } = this.state;
     const { user } = this.props;
-    console.log(profile);
+    console.log(posts);
     return (
       <div>
         {!error && (
@@ -189,6 +189,7 @@ class UserProfile extends Component {
             {!loading && (
               <UserWrapper>
                 {profile[0].university_name ? (
+                  <>
                   <UserCard>
                     <UserInfo>
                       <img
@@ -211,6 +212,39 @@ class UserProfile extends Component {
                       />
                     </UserInfo>
                   </UserCard>
+                  <div className="user-publications">
+                      <UserFollows>
+                        <UserSpan>
+                          Publicaciones
+                          <SpanUserInfo>{posts.length}</SpanUserInfo>
+                        </UserSpan>
+                        <UserSpan>
+                          <Link to={`/following/${profile[0].username}`}>
+                            Siguiendo
+                          </Link>
+                          <SpanUserInfo>{following.length}</SpanUserInfo>
+                        </UserSpan>
+                        <UserSpan>
+                          <Link to={`/followers/${profile[0].username}`}>
+                            Seguidores
+                          </Link>
+                          <SpanUserInfo>{follows.length}</SpanUserInfo>
+                        </UserSpan>
+                        <UserSpan>
+                          Likes
+                          <SpanUserInfo>0</SpanUserInfo>
+                        </UserSpan>
+                      </UserFollows>
+                      {posts.length === 0 && (
+                        <NoPosts>
+                          Este usuario todavía no ha escrito ninguna publicación
+                        </NoPosts>
+                      )}
+                      <Posts>
+                        <Post posts={posts}></Post>
+                      </Posts>
+                    </div>
+                  </>
                 ) : (
                   <>
                     <UserCard>

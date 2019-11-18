@@ -97,7 +97,7 @@ class ListFollowers extends Component {
             <p>{username.follower.username}</p>
           </Center>
           <p>
-            sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+            {username.description}
           </p>
         </Link>
         <Center>

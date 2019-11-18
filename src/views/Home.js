@@ -104,7 +104,7 @@ class Home extends Component {
                     width="100"
                   />
                   <div className="name">@{user.username}</div>
-                  <div className="position">Universidad</div>
+                  <div className="position">{user.university}</div>
 
                   <div className="stats">
                     <span className="followers">

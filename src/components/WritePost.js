@@ -18,7 +18,7 @@ const ButtonWritePost = styled.button`
 class WritePost extends Component {
   state = {
     text: "",
-    disabled: true
+    disabled: true,
   };
   handleInput = e => {
     this.setState({
@@ -27,11 +27,12 @@ class WritePost extends Component {
   };
   addPost = e => {
     e.preventDefault();
-    const { user, updatePost, university } = this.props;
+    const { user, updatePost, university, post } = this.props;
     const { text, caracters } = this.state;
     const username = user.username;
+    const post_id = post._id;
     postServices
-      .createPost(username, text, university)
+      .createPost(username, text, university, post_id )
       .then(post => {
         updatePost(post.post);
       })

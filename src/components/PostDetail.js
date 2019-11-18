@@ -5,6 +5,8 @@ import Moment from "react-moment";
 import "moment-timezone";
 import { Link } from "react-router-dom";
 import AuthProvider, { withAuth } from "../Context/AuthContext";
+import WritePost from "./WritePost";
+import PostComment from "./PostComment";
 
 const HeartWrap = styled.span`
   i {
@@ -24,21 +26,23 @@ const Posts = styled.div`
   margin-right: 20px;
   width: 60%;
 `;
+
 class PostDetail extends Component {
   state = {
     post: [],
     error: "",
-    likes: []
+    likes: [],
+    comments: [],
   };
 
   async componentDidMount() {
     const { postId } = this.props.match.params;
     const posts = await postServices.postDetail(postId).catch(error => {
     });
-    console.log(posts);
     this.setState({
-      post: posts,
-      likes: posts.likes
+      post: posts.postDetail,
+      likes: posts.postDetail.likes,
+      comments:  posts.postComments
     });
   }
   makeLike = async () => {
@@ -93,8 +97,15 @@ class PostDetail extends Component {
       );
     }
   };
+  updatePost = async comment => {
+    const { comments } = this.state;
+    this.setState({
+      comments: [comment, ...comments]
+    });
+  };
   render() {
-    const { post, likes } = this.state;
+    const { post, likes, comments } = this.state;
+    const { user } = this.props;
     const DateToFormat = post.created_at;
     return (
       <PostWrapper>
@@ -127,9 +138,15 @@ class PostDetail extends Component {
                 </p>
                 {this.ifExistLike()}
               </Link>
+              <WritePost post={post} user={user} updatePost={this.updatePost} ></WritePost>
             </div>
           )}
         </Posts>
+          {comments.map((comment) =>{
+            return (
+              <PostComment comment={comment}></PostComment>
+            )
+          })}
       </PostWrapper>
     );
   }
