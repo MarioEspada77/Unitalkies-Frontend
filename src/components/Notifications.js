@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import notifificationServices from "../services/notificationService";
 import NotificationList from './NotificationList';
+import styled from "styled-components";
+
+const Container = styled.div`
+  margin-top: 40px;
+`;
 
 class Notifications extends Component {
     state = {
@@ -16,11 +21,11 @@ class Notifications extends Component {
         const { notifications } = this.state;
         console.log(notifications);
         return (
-            <div>
+            <Container>
                 {notifications.map((notification) =>{
                     return <NotificationList notification={notification} key={`notification-${notification._id}`}/>
                 })}
-            </div>
+            </Container>
         );
     }
 }
