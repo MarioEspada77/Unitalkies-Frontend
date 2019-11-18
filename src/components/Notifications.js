@@ -4,9 +4,8 @@ import NotificationList from './NotificationList';
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin-top: 40px;
+  margin-top: 140px;
 `;
-
 class Notifications extends Component {
     state = {
         notifications: [],
