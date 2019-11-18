@@ -84,6 +84,10 @@ const NoPosts = styled.div`
   border-radius: 4px;
   border: 1px solid ${({ theme }) => theme.borderColor};
 `;
+const Description = styled.p`
+    color: ${({ theme }) => theme.color};
+    margin-top: 5px;
+`
 class UserProfile extends Component {
   state = {
     profile: [],
@@ -217,7 +221,8 @@ class UserProfile extends Component {
                         width="100"
                       />
                       <div className="name">@{profile[0].username}</div>
-                      <div className="position">Universidad</div>
+                      <div className="position">{profile[0].university}</div>
+                      <Description >{profile[0].description}</Description>
                       {user._id !== profile[0]._id ? (
                         <Follow
                           isFollowing={isFollowing}
