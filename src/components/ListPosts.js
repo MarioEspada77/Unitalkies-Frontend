@@ -93,8 +93,7 @@ class ListPosts extends Component {
           <Link to={`/detail/${post._id}`}>
             <p>
               <i>
-                {post.username.username} ·
-                <Moment fromNow>{DateToFormat}</Moment>
+                {post.username.username} · <Moment fromNow>{DateToFormat}</Moment>
                 {post.formUni && (
                   <span> en la universidad {post.formUni.university_name}</span>
                 )}
