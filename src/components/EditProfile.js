@@ -1,11 +1,54 @@
 import React, { Component } from 'react';
+import styled from "styled-components";
+
+const EditWrapper = styled.div`
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 100px;
+    text-align: center;
+    padding: 10px;
+    color:${({ theme }) => theme.color};
+    border: 1px solid ${({ theme }) => theme.borderColor};
+    background-color: ${({ theme }) => theme.boxColor};
+`
+const InputForm = styled.input`
+    width: 100%;
+    padding: 6px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid ${({ theme }) => theme.borderColor};
+`
+const LabelForm = styled.label`
+`
+const ButtonForm = styled.input`
+    margin-top: 10px;
+    display: inline-block;
+    background-color: ${({ theme }) => theme.secondary}
+    text-align: center;
+    border: 1px solid ${({ theme }) => theme.secondary}
+    border-radius: 0.25rem;
+    margin-top: 10px;
+    padding: 4px;
+    width: 140px;
+    margin-left: 10px;
+`
 
 class EditProfile extends Component {
+    state = {
+        university: "",
+        description: "", 
+    }
     render() {
         return (
-            <div>
-                <p>Edit</p>
-            </div>
+            <EditWrapper>
+                    <form>
+                        <LabelForm>Universidad</LabelForm>
+                        <InputForm placeholder="Universidad"></InputForm>
+                        <LabelForm>Descripción</LabelForm>
+                        <InputForm placeholder="Descripción"></InputForm>
+                        <ButtonForm value="Actualizar Datos"/>
+                    </form>
+            </EditWrapper>
         );
     }
 }
