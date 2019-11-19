@@ -1,5 +1,11 @@
 import React, { Component, createContext } from "react";
 import authService from "../services/authService";
+import styled from "styled-components";
+
+const Loading = styled.div`
+  margin-top: 100px;
+  text-align: center;
+`;
 
 const AuthContext = createContext();
 
@@ -121,7 +127,11 @@ export default class AuthProvider extends Component {
     const { isLoading, isLoggedin, user } = this.state;
     const { children } = this.props;
     if (isLoading) {
-      return <div>Loading...</div>;
+      return (
+        <Loading>
+          <div className="spinner-border loading"></div>
+        </Loading>
+      );
     } else {
       return (
         <Provider

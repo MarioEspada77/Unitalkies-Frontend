@@ -2,6 +2,24 @@ import React, { Component } from "react";
 import Follow from "./Follow";
 import { withAuth } from "../Context/AuthContext";
 import followServices from "../services/followService";
+import styled from "styled-components";
+
+const UserCard = styled.div`
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color};
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  margin-left: 20px;
+  margin-top: 140px;
+  height: auto;
+  width: 240px;
+  padding: 10px;
+  margin-right: 20px;
+  word-break: break-all;
+  border-radius: 4px;
+`;
+const Center = styled.div`
+  text-align: center;
+`;
 
 class ListFollowing extends Component {
   state = {
@@ -68,14 +86,18 @@ class ListFollowing extends Component {
     const { isFollowing } = this.state;
 
     return (
-      <div>
-        <p>{username.followed.username}</p>
-        <Follow
-          isFollowing={isFollowing}
-          getUnfollow={this.getUnfollow}
-          getFollows={this.getFollows}
-        ></Follow>
-      </div>
+      <UserCard>
+        <Center>
+          <p>{username.followed.username}</p>
+        </Center>
+        <Center>
+          <Follow
+            isFollowing={isFollowing}
+            getUnfollow={this.getUnfollow}
+            getFollows={this.getFollows}
+          ></Follow>
+        </Center>
+      </UserCard>
     );
   }
 }

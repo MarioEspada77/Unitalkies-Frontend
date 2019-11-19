@@ -11,9 +11,9 @@ class postService {
   listAllPost() {
     return this.post.get("/post/all").then(({ data }) => data);
   }
-  createPost(username, text, university) {
+  createPost(username, text, university, post_id) {
     return this.post
-      .post(`/post/${username}/new`, { text, university })
+      .post(`/post/${username}/new`, { text, university, post_id })
       .then(({ data }) => data);
   }
   createLike(postId, username) {
@@ -25,6 +25,9 @@ class postService {
     return this.post
       .get(`/post/${postId}/${username}/unlike`)
       .then(({ data }) => data);
+  }
+  postDetail(postId) {
+    return this.post.get(`/post/detail/${postId}`).then(({ data }) => data);
   }
 }
 

@@ -2,6 +2,25 @@ import React, { Component } from "react";
 import { withAuth } from "../Context/AuthContext";
 import followServices from "../services/followService";
 import Follow from "./Follow";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+const UserCard = styled.div`
+  background-color: ${({ theme }) => theme.boxColor};
+  color: ${({ theme }) => theme.color};
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  margin-left: 20px;
+  margin-top: 140px;
+  height: auto;
+  width: 240px;
+  padding: 10px;
+  margin-right: 20px;
+  word-break: break-all;
+  border-radius: 4px;
+`;
+const Center = styled.div`
+  text-align: center;
+`;
 
 class ListFollowers extends Component {
   state = {
@@ -69,16 +88,26 @@ class ListFollowers extends Component {
   render() {
     const { isFollowing } = this.state;
     const { username } = this.props;
+    console.log("USERNAME", username);
 
     return (
-      <div>
-        <p>{username.follower.username}</p>
-        <Follow
-          isFollowing={isFollowing}
-          getUnfollow={this.getUnfollow}
-          getFollows={this.getFollows}
-        ></Follow>
-      </div>
+      <UserCard>
+        <Link to={`/profile/${username.follower.username}`}>
+          <Center>
+            <p>{username.follower.username}</p>
+          </Center>
+          <p>
+            {username.description}
+          </p>
+        </Link>
+        <Center>
+          <Follow
+            isFollowing={isFollowing}
+            getUnfollow={this.getUnfollow}
+            getFollows={this.getFollows}
+          ></Follow>
+        </Center>
+      </UserCard>
     );
   }
 }

@@ -1,6 +1,27 @@
 import React, { Component } from 'react';
 import { withAuth } from '../../Context/AuthContext';
+import styled from "styled-components";
 
+const LoginForm = styled.div`
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+  padding: 10px;
+  background-color: ${({ theme }) => theme.boxColor};
+`
+const InputLogin = styled.input`
+  margin-top: 10px;
+  display: inline-block;
+  background-color: ${({ theme }) => theme.secondary}
+  text-align: center;
+  border: 1px solid ${({ theme }) => theme.secondary}
+  border-radius: 0.25rem;
+  margin-top: 10px;
+  padding: 4px;
+  width: 120px;
+  margin-left: 10px;
+`;
 class Login extends Component {
   state = {
     username: "",
@@ -15,22 +36,28 @@ class Login extends Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    this.props.handleLogin({
-      username,
-      password
-    })
+    if(username === "" || password === ""){
+      alert("Los campos no pueden estar vacíos");
+    }else{
+      this.props.handleLogin({
+        username,
+        password
+      })
+    }
   }
 
   render() {
     const { username, password } = this.state;
     return (
-      <form onSubmit={this.handleFormSubmit}>
-        <label>Username:</label>
-        <input type="text" name="username" value={username} onChange={this.handleChange}/>
-        <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={this.handleChange} />
-        <input type="submit" value="Login" />
-      </form>
+      <LoginForm>
+          <form onSubmit={this.handleFormSubmit}>
+            <label>Username:</label>
+            <input type="text" name="username" value={username} onChange={this.handleChange}/>
+            <label>Password:</label>
+            <input type="password" name="password" value={password} onChange={this.handleChange} />
+            <InputLogin type="submit" value="Login" />
+          </form>
+      </LoginForm>
     )
   }
 }
