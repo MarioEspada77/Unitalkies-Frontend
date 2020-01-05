@@ -100,6 +100,9 @@ class nav extends Component {
                     />
                     <DropDown className="dropdown-menu">
                       <a class="dropdown-item">
+                        <Link to={`/home`}>Home</Link>
+                      </a>
+                      <a class="dropdown-item">
                         <Link to={`/profile/${user.username}`}>Ver perfil</Link>
                       </a>
                       <a className="dropdown-item">
