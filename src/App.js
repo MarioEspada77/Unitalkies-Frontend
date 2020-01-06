@@ -64,6 +64,7 @@ class App extends Component {
               actualTheme={actualTheme}
             />
             <Switch>
+              <AnonRoute exact path="/" component={Login} />
               <AnonRoute exact path="/login" component={Login} />
               <AnonRoute exact path="/signup" component={Signup} />
               <PrivateRoute exact path="/home" component={Home} />
