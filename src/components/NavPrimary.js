@@ -112,6 +112,9 @@ class nav extends Component {
                             : "Cambiar a modo claro"}
                         </a>
                       </a>
+                      <a class="dropdown-item">
+                        <Link to={`/report`}>Reportar un error</Link>
+                      </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" onClick={handleLogout}>
                         Cerrar sesión
