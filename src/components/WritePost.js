@@ -10,6 +10,7 @@ const ButtonWritePost = styled.button`
   text-align: center;
   border: 1px solid ${({ theme }) => theme.primary}
   border-radius: 0.25rem;
+  cursor: ${( props ) =>  props.disabled ? "not-allowed" : "pointer" } 
   margin-top: 10px;
   padding: 4px;
   width: 120px;
@@ -57,7 +58,7 @@ class WritePost extends Component {
             ></textarea>
           </div>
           <div className="text-right">
-            <ButtonWritePost>Publicar</ButtonWritePost>
+            {text.length > 0 ? <ButtonWritePost>Publicar</ButtonWritePost> : <ButtonWritePost disabled={true}>Publicar</ButtonWritePost> }
           </div>
         </form>
       </div>
